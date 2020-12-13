@@ -201,6 +201,10 @@
 <li>&#x7B2C;1&#x7AE0; &#x7DDA;&#x5F62;&#x56DE;&#x5E30;&#x3068;OLS</li>
 </ul>
 </li>
+<li>&#x6D45;&#x91CE;&#x7699;&#x3001;&#x4E2D;&#x6751;&#x4E8C;&#x6717;&#x300E;<a href="http://www.yuhikaku.co.jp/books/detail/9784641163362" target="_blank">&#x8A08;&#x91CF;&#x7D4C;&#x6E08;&#x5B66; (&#x7B2C;2&#x7248;)</a>&#x300F;&#x6709;&#x6590;&#x95A3;&#x3001;2009&#xFF0E;<ul>
+<li>&#x7B2C;2&#x7AE0;&#x3000;&#x53E4;&#x5178;&#x7684;2&#x5909;&#x6570;&#x56DE;&#x5E30;&#x30E2;&#x30C7;&#x30EB;&#x3000;&#x4ED6;</li>
+</ul>
+</li>
 <li>Jeffrey M. Wooldridge, <a href="https://mitpress.mit.edu/books/econometric-analysis-cross-section-and-panel-data-second-edition" target="_blank">Econometric Analysis of Cross Section and Panel Data (Second Edition)</a>, MIT Press, 2010.<ul>
 <li>Ch. 4 Single-Equation Linear Model and Ordinary Least Squares Estimation</li>
 </ul>
@@ -214,12 +218,32 @@
 </ul>
 </li>
 </ul>
-<h2 id="&#x6982;&#x8981;">&#x6982;&#x8981;</h2>
-<p>Greene pp. 17ff</p>
+<h2 id="&#x57FA;&#x790E;">&#x57FA;&#x790E;</h2>
+<p>Greene [pp. 13ff]</p>
+<p><script type="math/tex; "> y = x_1 \beta_1 + \cdots + x_K \beta_K + \epsilon = \mathbf{x}' \boldsymbol{\beta} + \epsilon </script></p>
+<ul>
+<li><script type="math/tex; "> y </script>: dependent variable, explained variable, regressand</li>
+<li><script type="math/tex; "> x_1, \ldots, x_K </script>: independent variable, explanatory variable, regressors<ul>
+<li><script type="math/tex; "> \mathbf{x} = (x_1, x_2, \ldots, x_K) </script></li>
+</ul>
+</li>
+<li><script type="math/tex; "> \epsilon </script>: random disturbance</li>
+</ul>
+<p><script type="math/tex; "> \mathbf{y} = \mathbf{x}_1 \beta_1 + \cdots + \mathbf{x}_K \beta_K + \boldstyle{\epsilon} = \mathbf{X} \boldsymbol{\beta} + \boldsymbol{\epsilon} </script></p>
+<ul>
+<li><script type="math/tex; "> \mathbf{y} = \begin{bmatrix} y_1 \\ y_2 \\ \\ \vdots \\ y_n \end{bmatrix} </script></li>
+<li><script type="math/tex; "> \mathbf{X} = \begin{bmatrix}
+ x_{11} & x_{12} & \cdots & x_{1K} \\
+ x_{21} & x_{22} & \cdots & x_{2K} \\
+ \vdots & \vdots & \ddots & \vdots \\
+ x_{n1} & x_{n2} & \cdots & x_{nK} \end{bmatrix} </script></li>
+<li><script type="math/tex; "> \boldstyle{\epsilon} = \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \\ \vdots \\ \epsilon_n \end{bmatrix} </script></li>
+</ul>
+<p>Greene [pp. 17ff]</p>
 <p>&#x7DDA;&#x5F62;&#x56DE;&#x5E30;&#x30E2;&#x30C7;&#x30EB;&#x306E;&#x4EEE;&#x5B9A;</p>
 <ul>
-<li>A1. &#x7DDA;&#x5F62;&#x6027;&#xFF1A;<script type="math/tex; "> y = x_1 \beta_1 + \cdots + x_K \beta_K + \epsilon = \mathbf{x}' \mathbf{\beta} + \epsilon </script></li>
-<li>A2. &#x30D5;&#x30EB;&#x30E9;&#x30F3;&#x30AF;&#xFF1A;<script type="math/tex; "> K \times K </script> &#x306E;&#x884C;&#x5217; <script type="math/tex; "> E[\mathbf{xx}'] = \mathbf{Q} </script> &#x304C;&#x30D5;&#x30EB;&#x30E9;&#x30F3;&#x30AF;&#x3001;&#x3059;&#x306A;&#x308F;&#x3061; <script type="math/tex; "> \mbox{rank}(\mathbf{Q}) = K </script></li>
+<li>A1. &#x7DDA;&#x5F62;&#x6027;&#xFF1A;<script type="math/tex; "> y = x_1 \beta_1 + \cdots + x_K \beta_K + \epsilon = \mathbf{x}' \boldsymbol{\beta} + \epsilon </script></li>
+<li>A2. &#x30D5;&#x30EB;&#x30E9;&#x30F3;&#x30AF;&#xFF1A;<script type="math/tex; "> E[\mathbf{xx}'] = \mathbf{Q} </script> &#xFF08;<script type="math/tex; "> K \times K </script> &#x306E;&#x884C;&#x5217;&#xFF09;&#x304C;&#x30D5;&#x30EB;&#x30E9;&#x30F3;&#x30AF;&#x3001;&#x3059;&#x306A;&#x308F;&#x3061; <script type="math/tex; "> \mbox{rank}(\mathbf{Q}) = K </script></li>
 </ul>
 
                                 
@@ -264,7 +288,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"線形回帰","level":"1.2","depth":1,"next":{"title":"Heckit","level":"1.3","depth":1,"path":"heckit.md","ref":"heckit.md","articles":[]},"previous":{"title":"Top","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"regression.md","mtime":"2020-12-13T05:42:36.474Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-13T05:42:52.238Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"線形回帰","level":"1.2","depth":1,"next":{"title":"Heckit","level":"1.3","depth":1,"path":"heckit.md","ref":"heckit.md","articles":[]},"previous":{"title":"Top","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"regression.md","mtime":"2020-12-13T06:07:33.111Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-13T06:07:51.553Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
