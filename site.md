@@ -1,27 +1,28 @@
-# –{ƒTƒCƒg‚Ì\’z
+ï»¿# æœ¬ã‚µã‚¤ãƒˆã®æ§‹ç¯‰
 
-uGitBookv‚É‚æ‚éMarkdown‚©‚ç‚ÌHTML‰»¨GitHubã‚ÉŒöŠJ
+ã€ŒGitBookã€ã«ã‚ˆã‚‹Markdownã‹ã‚‰ã®HTMLåŒ–â†’GitHubä¸Šã«å…¬é–‹
 
-* ‚¨‚à‚ÉAr-ngtm‚³‚ñ‚Ìu[GitBook‚ÅWebƒTƒCƒg‚ğì‚Á‚ÄGitHub Pages‚ÅŒöŠJ‚·‚é•û–@](https://r-ngtm.hatenablog.com/entry/2020/06/18/193235)vi2020-06-18j‚ğQÆ
-* WindowsŠÂ‹«‚ÅPowerShell‚ğg—p
- * `npm init` ‚Å‚«‚È‚¢ê‡APowerShell‚ğŠÇ—Ò‚Æ‚µ‚ÄÀsB`Set-ExecutionPolicy Unrestricted` ‚ÅÀsƒ|ƒŠƒV[‚ğ•ÏX
-* `TypeError: cb.apply is not a function` ¨ [unode.js‚Ìƒo[ƒWƒWƒ‡ƒ“‚ğ‰º‚°‚½‚çƒGƒ‰[‚ª‰ğÁv‚Æ‚Ì‹Lq](https://teratail.com/questions/279576)‚ğŒ©‚Â‚¯‚½‚Ì‚ÅAÅV”Å‚ğƒAƒ“ƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚©‚çA[­‚µŒÃ‚¢ƒo[ƒWƒ‡ƒ“](https://nodejs.org/ja/download/releases/)‚ğÄƒCƒ“ƒXƒg[ƒ‹
-* `Error: ENOENT: no such file or directory, * '* \gitbook\gitbook-plugin-fontsettings\fontsettings.js'` ¨ [GitBook ‚Å 'no such file or directory' ‚Æ‚¢‚¤ƒGƒ‰[‚ª•\¦‚³‚ê‚é](http://kuttsun.blogspot.com/2018/06/gitbook-no-such-file-or-directory.html)
-* [Git‚ÌƒCƒ“ƒXƒg[ƒ‹](https://notepad-plus-plus.org/downloads/)
- * ƒGƒfƒBƒ^‚Í[Notepad++](https://notepad-plus-plus.org/downloads/)‚È‚Ç‚É‚µ‚Ä‚¨‚­
- * `git commit` ‚Å `Author identity unknown` ‚ÆŒ¾‚í‚ê‚½‚çAw¦‚³‚ê‚½‚Æ‚¨‚è‚É“ü—Í
+* ãŠã‚‚ã«ã€r-ngtmã•ã‚“ã®ã€Œ[GitBookã§Webã‚µã‚¤ãƒˆã‚’ä½œã£ã¦GitHub Pagesã§å…¬é–‹ã™ã‚‹æ–¹æ³•](https://r-ngtm.hatenablog.com/entry/2020/06/18/193235)ã€ï¼ˆ2020-06-18ï¼‰ã‚’å‚ç…§
+* Windowsç’°å¢ƒã§PowerShellã‚’ä½¿ç”¨
+ * `npm init` ã§ããªã„å ´åˆã€PowerShellã‚’ç®¡ç†è€…ã¨ã—ã¦å®Ÿè¡Œã€‚`Set-ExecutionPolicy Unrestricted` ã§å®Ÿè¡Œãƒãƒªã‚·ãƒ¼ã‚’å¤‰æ›´
+* `TypeError: cb.apply is not a function` â†’ [ã€Œnode.jsã®ãƒãƒ¼ã‚¸ã‚¸ãƒ§ãƒ³ã‚’ä¸‹ã’ãŸã‚‰ã‚¨ãƒ©ãƒ¼ãŒè§£æ¶ˆã€ã¨ã®è¨˜è¿°](https://teratail.com/questions/279576)ã‚’è¦‹ã¤ã‘ãŸã®ã§ã€æœ€æ–°ç‰ˆã‚’ã‚¢ãƒ³ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¦ã‹ã‚‰ã€[å°‘ã—å¤ã„ãƒãƒ¼ã‚¸ãƒ§ãƒ³](https://nodejs.org/ja/download/releases/)ã‚’å†ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
+* `Error: ENOENT: no such file or directory, * '* \gitbook\gitbook-plugin-fontsettings\fontsettings.js'` â†’ [GitBook ã§ 'no such file or directory' ã¨ã„ã†ã‚¨ãƒ©ãƒ¼ãŒè¡¨ç¤ºã•ã‚Œã‚‹](http://kuttsun.blogspot.com/2018/06/gitbook-no-such-file-or-directory.html)
+* [Gitã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«](https://notepad-plus-plus.org/downloads/)
+ * ã‚¨ãƒ‡ã‚£ã‚¿ã¯[Notepad++](https://notepad-plus-plus.org/downloads/)ãªã©ã«ã—ã¦ãŠã
+ * `git commit` ã§ `Author identity unknown` ã¨è¨€ã‚ã‚ŒãŸã‚‰ã€æŒ‡ç¤ºã•ã‚ŒãŸã¨ãŠã‚Šã«å…¥åŠ›
 
-* [MathJax](https://github.com/GitbookIO/plugin-mathjax)‚ÅãY—í‚È”®‚ª•\¦‚Å‚«‚é
- * book.json ‚Éƒvƒ‰ƒOƒCƒ“‚Æ‚µ‚Ä’Ç‰Á‚·‚éF
+* [MathJax](https://github.com/GitbookIO/plugin-mathjax)ã§ç¶ºéº—ãªæ•°å¼ãŒè¡¨ç¤ºã§ãã‚‹
+ * book.json ã«ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã¨ã—ã¦è¿½åŠ ã™ã‚‹ï¼š
 ````
 {
     "language": "ja",
     "plugins":["mathjax"]
 }
 ````
- * [uƒR[ƒhƒuƒƒbƒN‚ÌŒ¾Œêw’è‚É "math" ‚ğw’è‚·‚é‚±‚Æ‚ÅTeX‹L–@‚ğ—p‚¢‚Ä”®‚ğ‹Lqv](https://qiita.com/Qiita/items/c686397e4a0f4f11683d#%E6%95%B0%E5%BC%8F%E3%81%AE%E6%8C%BF%E5%85%A5)‚Æ‚Ìî•ñ‚ ‚èiÚ×–¢Šm”Fj
-* Markdown‚Ìì¬
- * Chrome‚âFirefox‚ÌŠg’£‹@”\uMarkdown Viewerv‚ğ—˜—p‚µ‚ÄƒvƒŒƒrƒ…[
+ * [ã€Œã‚³ãƒ¼ãƒ‰ãƒ–ãƒ­ãƒƒã‚¯ã®è¨€èªæŒ‡å®šã« "math" ã‚’æŒ‡å®šã™ã‚‹ã“ã¨ã§TeXè¨˜æ³•ã‚’ç”¨ã„ã¦æ•°å¼ã‚’è¨˜è¿°ã€](https://qiita.com/Qiita/items/c686397e4a0f4f11683d#%E6%95%B0%E5%BC%8F%E3%81%AE%E6%8C%BF%E5%85%A5)ã¨ã®æƒ…å ±ã‚ã‚Šï¼ˆè©³ç´°æœªç¢ºèªï¼‰
+* Markdownã®ä½œæˆ
+ * Chromeã‚„Firefoxã®æ‹¡å¼µæ©Ÿèƒ½ã€ŒMarkdown Viewerã€ã‚’åˆ©ç”¨ã—ã¦ãƒ—ãƒ¬ãƒ“ãƒ¥ãƒ¼
+ * .md ãƒ•ã‚¡ã‚¤ãƒ«ã¯ï¼ˆsjisã§ã¯ãªãï¼‰utf-8ã§ä¿å­˜
 
 ````
 cd c://dir
