@@ -11,5 +11,8 @@
     "url": "stat"
   },
   "author": "Sho Kuroda",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "mathjax": "^2.7.6"
+  }
 }
