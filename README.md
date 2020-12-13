@@ -1,9 +1,5 @@
 # Top
 
+統計学・計量経済学に関する個人的なメモ書きです。
+
 信用しないでください。
-
-
-Don't trust the contents.
-
-Memorandum/Note of Statistics and Econometrics
-

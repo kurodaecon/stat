@@ -1,0 +1,1 @@
+powershell .\gitpush.ps1
