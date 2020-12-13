@@ -1,4 +1,4 @@
-﻿# 本サイトの構築
+# 本サイトの構築
 
 「GitBook」によるMarkdownからのHTML化→GitHub上に公開
 
