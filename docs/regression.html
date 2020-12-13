@@ -225,11 +225,11 @@
 <ul>
 <li><script type="math/tex; "> n </script>: observations</li>
 <li><script type="math/tex; "> K </script>: variables (include intercept)</li>
-<li><script type="math/tex; "> y </script>: dependent variable, explained variable, regressand<ul>
+<li><script type="math/tex; "> y </script>: &#x88AB;&#x8AAC;&#x660E;&#x5909;&#x6570;, dependent variable, explained variable, regressand, outcome<ul>
 <li><script type="math/tex; "> \mathbf{y} = \begin{bmatrix} y_1 \\ y_2 \\ \\ \vdots \\ y_n \end{bmatrix} </script>: <script type="math/tex; "> n \times 1 </script> vector</li>
 </ul>
 </li>
-<li><script type="math/tex; "> x_1, \ldots, x_K </script>: independent variable, explanatory variable, regressors<ul>
+<li><script type="math/tex; "> x_1, \ldots, x_K </script>: &#x8AAC;&#x660E;&#x5909;&#x6570;, independent variable, explanatory variable, regressors<ul>
 <li><script type="math/tex; "> \mathbf{x} = (x_1, x_2, \ldots, x_K) </script></li>
 <li><script type="math/tex; "> \mathbf{X} = \begin{bmatrix}
  x_{11} & x_{12} & \cdots & x_{1K} \\
@@ -242,31 +242,50 @@
 <li><script type="math/tex; "> \boldsymbol{\epsilon} = \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \\ \vdots \\ \epsilon_n \end{bmatrix} </script>: <script type="math/tex; "> n \times 1 </script> vector</li>
 </ul>
 </li>
-<li><script type="math/tex; "> \boldsymbol{\beta} = \begin{bmatrix} \beta_1 \\ \epsilon_2 \\ \\ \vdots \\ \beta_K \end{bmatrix} </script>: <script type="math/tex; "> K \times 1 </script> vector of coefficient</li>
+<li><script type="math/tex; "> \boldsymbol{\beta} = \begin{bmatrix} \beta_1 \\ \beta_2 \\ \\ \vdots \\ \beta_K \end{bmatrix} </script>: <script type="math/tex; "> K \times 1 </script> vector of coefficient</li>
 </ul>
-<p>&#x7DDA;&#x5F62;&#x56DE;&#x5E30;&#x30E2;&#x30C7;&#x30EB;&#x306E;&#x4EEE;&#x5B9A; [Greene, pp. 17ff]</p>
+<p>&#x7DDA;&#x5F62;&#x56DE;&#x5E30;&#x30E2;&#x30C7;&#x30EB;&#x306E;&#x4EEE;&#x5B9A; [Greene, pp. 17ff, p. 55]</p>
 <ul>
-<li>A1. &#x7DDA;&#x5F62;&#x6027;&#xFF1A;<script type="math/tex; "> y = x_1 \beta_1 + \cdots + x_K \beta_K + \epsilon = \mathbf{x}' \boldsymbol{\beta} + \epsilon </script></li>
+<li>A1. &#x7DDA;&#x5F62;&#x6027;&#xFF1A;<script type="math/tex; "> \mathbf{y} = \mathbf{X} \boldsymbol{\beta} + \boldsymbol{\epsilon} </script></li>
 <li>A2. &#x30D5;&#x30EB;&#x30E9;&#x30F3;&#x30AF;&#xFF1A;<script type="math/tex; "> E[\mathbf{xx}'] = \mathbf{Q} </script> &#xFF08;<script type="math/tex; "> K \times K </script> &#x306E;&#x884C;&#x5217;&#xFF09;&#x304C;&#x30D5;&#x30EB;&#x30E9;&#x30F3;&#x30AF;&#x3001;&#x3059;&#x306A;&#x308F;&#x3061; <script type="math/tex; "> \mbox{rank}(\mathbf{Q}) = K </script></li>
 <li>A3. &#x8AAC;&#x660E;&#x5909;&#x6570;&#x306E;&#x5916;&#x751F;&#x6027;&#xFF1A;<script type="math/tex; "> E[\epsilon | x_1, \ldots, x_K] = E[\epsilon | \mathbf{x}] </script></li>
-<li>A4. &#x8AA4;&#x5DEE;&#x9805;&#x306E;&#x5747;&#x4E00;&#x5206;&#x6563;&#xFF1A;<script type="math/tex; "> \mbox{Var}[\epsilon | \mathbf{x}] = \mbox{Var}[\epsilon] = \sigma^2 </script> and <script type="math/tex; ">$$
-* A5. データ生成過程：</script> (y, \mathbf{x}) <script type="math/tex; "> の結合分布からの iid (independent, identically distributed) ドローのランダム標本
-* A6. 誤差項の正規性：</script> \epsilon \sim N(\mathbf{x}&apos; \boldsymbol{\beta}, \sigma^2) <script type="math/tex; mode=display">
-
-最小二乗法 [Greene, pp. 28ff]
-
-</script> y<em>i = \mathbf{x}&apos;_i \mathbf{b} + e_i <script type="math/tex; mode=display">
-* </script> y_i = \mathbf{x}&apos;_i \boldsymbol{\beta} + epsilon_i = \mathbf{x}&apos;_i \mathbf{b} + e_i <script type="math/tex; mode=display">
-
-* </script> e <script type="math/tex; ">: 残差 residual
-* </script> b <script type="math/tex; ">: 回帰パラメータの推定量 estimator
-* OLS: </script> \mbox{Minimize}</em>{\mathbf{b}} S(\mathbf{b}) <script type="math/tex; mode=display">
- * </script> S(\mathbf{b}) \equiv \mathbf{e}&apos; \mathbf{e} = (\mathbf{y} - \mathbf{Xb})&apos;(\mathbf{y} - \mathbf{Xb}) = \sum<em>{i = 1}^{n} e</em>{i}^2 = \sum<em>{i = 1}^{n} (y</em>{i} - \mathbf{x}&apos;_i \mathbf{b})^2 <script type="math/tex; mode=display">
- * </script> S(\mathbf{b}) = \mathbf{y}&apos; \mathbf{y} - 2 \mathbf{y}&apos; \mathbf{Xb} + \mathbf{b&apos; X&apos; X b} <script type="math/tex; mode=display">
- * 残差二乗和が最小 ⇔ 微分して0：</script> \frac{\partial S(\mathbf{b})}{\partial \mathbf{b}} = -2 \mathbf{X&apos; y} + 2 \mathbf{X&apos; X b} = \mathbf{0} <script type="math/tex; mode=display">
-  * 「最大」ではなく「最小」であるためには2階微分が正定値行列である必要があり、これも確認可
- * 正規方程式：</script> \mathbf{X&apos; y} = \mathbf{X&apos; X b} <script type="math/tex; mode=display">
- * </script> \mathbf{b} = (\mathbf{X&apos; X})^{-1} \mathbf{X&apos; y} $$</li>
+<li>A4. &#x8AA4;&#x5DEE;&#x9805;&#x306E;&#x5747;&#x4E00;&#x5206;&#x6563;&#xFF1A;<script type="math/tex; "> \mbox{Var}[\epsilon | \mathbf{x}] = \mbox{Var}[\epsilon] = \sigma^2 </script> and <script type="math/tex; "> E[\epsilon_i \epsilon_j | \mathbf{X}] = 0 </script> &#x2192; <script type="math/tex; "> E[\boldsymbol{\epsilon} \boldsymbol{\epsilon}' | \mathbf{X}] = \sigma^2 \mathbf{I} </script></li>
+<li>A5. &#x30C7;&#x30FC;&#x30BF;&#x751F;&#x6210;&#x904E;&#x7A0B;&#xFF1A;&#x975E;&#x78BA;&#x7387;&#x7684;&#x306A;&#x3001;<script type="math/tex; "> (y, \mathbf{x}) </script> &#x306E;&#x7D50;&#x5408;&#x5206;&#x5E03;&#x304B;&#x3089;&#x306E; iid (independent, identically distributed) &#x30C9;&#x30ED;&#x30FC;&#x306E;&#x30E9;&#x30F3;&#x30C0;&#x30E0;&#x6A19;&#x672C;</li>
+<li>A6. &#x8AA4;&#x5DEE;&#x9805;&#x306E;&#x6B63;&#x898F;&#x6027;&#xFF1A;<script type="math/tex; "> \epsilon \sim N(\mathbf{x}' \boldsymbol{\beta}, \sigma^2) </script></li>
+</ul>
+<p>&#x6700;&#x5C0F;&#x4E8C;&#x4E57;&#x6CD5; [Greene, pp. 28ff]</p>
+<p><script type="math/tex; "> y_i = \mathbf{x}'_i \mathbf{b} + e_i </script></p>
+<ul>
+<li><p><script type="math/tex; "> y_i = \mathbf{x}'_i \boldsymbol{\beta} + epsilon_i = \mathbf{x}'_i \mathbf{b} + e_i </script></p>
+</li>
+<li><p><script type="math/tex; "> e </script>: &#x6B8B;&#x5DEE; residual</p>
+</li>
+<li><script type="math/tex; "> b </script>: &#x56DE;&#x5E30;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x306E;&#x63A8;&#x5B9A;&#x91CF; estimator</li>
+<li>OLS: <script type="math/tex; "> \mbox{Minimize}_{\mathbf{b}} S(\mathbf{b}) </script><ul>
+<li><script type="math/tex; "> S(\mathbf{b}) \equiv \mathbf{e}' \mathbf{e} = (\mathbf{y} - \mathbf{Xb})'(\mathbf{y} - \mathbf{Xb}) = \sum_{i = 1}^{n} e_{i}^2 = \sum_{i = 1}^{n} (y_{i} - \mathbf{x}'_i \mathbf{b})^2 </script></li>
+<li><script type="math/tex; "> S(\mathbf{b}) = \mathbf{y}' \mathbf{y} - 2 \mathbf{y}' \mathbf{Xb} + \mathbf{b' X' X b} </script></li>
+<li>&#x6B8B;&#x5DEE;&#x4E8C;&#x4E57;&#x548C;&#x304C;&#x6700;&#x5C0F; &#x21D4; &#x5FAE;&#x5206;&#x3057;&#x3066;0&#xFF1A;<script type="math/tex; "> \frac{\partial S(\mathbf{b})}{\partial \mathbf{b}} = -2 \mathbf{X' y} + 2 \mathbf{X' X b} = \mathbf{0} </script></li>
+<li>&#x300C;&#x6700;&#x5927;&#x300D;&#x3067;&#x306F;&#x306A;&#x304F;&#x300C;&#x6700;&#x5C0F;&#x300D;&#x3067;&#x3042;&#x308B;&#x305F;&#x3081;&#x306B;&#x306F;2&#x968E;&#x5FAE;&#x5206;&#x304C;&#x6B63;&#x5B9A;&#x5024;&#x884C;&#x5217;&#x3067;&#x3042;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308A;&#x3001;&#x3053;&#x308C;&#x3082;&#x78BA;&#x8A8D;&#x53EF;</li>
+<li>&#x6B63;&#x898F;&#x65B9;&#x7A0B;&#x5F0F;&#xFF1A;<script type="math/tex; "> \mathbf{X' y} = \mathbf{X' X b} </script></li>
+<li>OLS&#x63A8;&#x5B9A;&#x91CF;&#xFF1A;<script type="math/tex; "> \mathbf{b} = (\mathbf{X' X})^{-1} \mathbf{X' y} = \boldsymbol{\beta} + \mathbf{A} \boldsymbol{\epsilon} </script></li>
+<li><script type="math/tex; "> \mathbf \equiv (\mathbf{X' X})^{-1} \mathbf{X'} </script>&#xFF1A;&#x7DDA;&#x5F62;&#x63A8;&#x5B9A;&#x91CF;</li>
+<li>OLS&#x63A8;&#x5B9A;&#x91CF;&#x306E;&#x671F;&#x5F85;&#x5024;&#xFF1A;<script type="math/tex; "> E[\mathbf{b} | \mathbf{X}] = \boldsymbol{\beta} </script>&#xFF1A;&#x4E0D;&#x504F;&#x63A8;&#x5B9A;&#x91CF;</li>
+<li>OLS&#x63A8;&#x5B9A;&#x91CF;&#x306E;&#x5206;&#x6563;&#xFF1A;<script type="math/tex; "> \mbox{Var}[\mathbf{b} | \mathbf{X}]
+ = E[(\mathbf{b} - \boldsymbol{\beta}) (\mathbf{b} - \boldsymbol{\beta})' | \mathbf{X}]
+ = E[\mathbf{A} \boldsymbol{\eqsilon} \boldsymbol{\eqsilon}' \mathbf{A}' | \mathbf{X}]
+ = \mathbf{A} E[\boldsymbol{\eqsilon} \boldsymbol{\eqsilon}' | \mathbf{X}] \mathbf{A}'
+ = \sigma^2 (\mathbf{X' X})^{-1} </script></li>
+</ul>
+</li>
+<li>&#x6C7A;&#x5B9A;&#x4FC2;&#x6570;&#xFF1A;<script type="math/tex; "> R^2 = \frac{\mbox{regression sum of squares}}{\mbox{total sum of squares}} = 1 - \frac{\sum e_i^2}{\sum (y_i - \bar{y})^2} </script><ul>
+<li>&#x81EA;&#x7531;&#x5EA6;&#x8ABF;&#x6574;&#x6E08;&#x307F;&#x6C7A;&#x5B9A;&#x4FC2;&#x6570;&#xFF1A;<script type="math/tex; "> \bar{R}^2 = 1 - \frac{n - 1}{n - K} (1 - R^2) </script></li>
+</ul>
+</li>
+<li>&#x30AC;&#x30A6;&#x30B9;&#x30FB;&#x30DE;&#x30EB;&#x30B3;&#x30D5;&#x306E;&#x5B9A;&#x7406;&#x306B;&#x3088;&#x308A;&#x3001;OLS&#x63A8;&#x5B9A;&#x91CF;&#x306F;BLUE (best lenear unbiased estimator)<ul>
+<li>&#x7DDA;&#x5F62;&#x6027;&#x3068;&#x4E0D;&#x504F;&#x6027;&#x306F;&#x4E0A;&#x8A18;&#x306E;&#x3068;&#x304A;&#x308A;</li>
+<li>&#x6700;&#x5C0F;&#x5206;&#x6563; (best)&#xFF1A;&#x7DDA;&#x5F62;&#x3067;&#x4E0D;&#x504F;&#x306A;&#x3088;&#x308A;&#x4E00;&#x822C;&#x7684;&#x306A;&#x63A8;&#x5B9A;&#x91CF; <script type="math/tex; "> \mathbf{b}_0 = \mathbf{Cy} </script> &#x3092;&#x8003;&#x3048;&#x3001;&#x305D;&#x306E;&#x5206;&#x6563;&#x304C;OLS&#x63A8;&#x5B9A;&#x91CF;&#x306E;&#x5206;&#x6563;&#x3088;&#x308A;&#x5C0F;&#x3055;&#x304F;&#x3059;&#x308B;&#x3053;&#x3068;&#x306F;&#x3067;&#x304D;&#x306A;&#x3044;&#x3053;&#x3068;&#x3092;&#x793A;&#x3059;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;</li>
+</ul>
+</li>
 </ul>
 
                                 
@@ -311,7 +330,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"線形回帰","level":"1.2","depth":1,"next":{"title":"Heckit","level":"1.3","depth":1,"path":"heckit.md","ref":"heckit.md","articles":[]},"previous":{"title":"Top","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"regression.md","mtime":"2020-12-13T06:41:36.853Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-13T06:41:57.106Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"線形回帰","level":"1.2","depth":1,"next":{"title":"Heckit","level":"1.3","depth":1,"path":"heckit.md","ref":"heckit.md","articles":[]},"previous":{"title":"Top","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"regression.md","mtime":"2020-12-13T07:06:15.865Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-13T07:06:19.372Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
