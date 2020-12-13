@@ -1,6 +1,4 @@
 {
-    "language": "ja"
-}
-{
+    "language": "ja",
     "plugins":["mathjax"]
 }
