@@ -1,0 +1,30 @@
+# 本サイトの構築
+
+「GitBook」によるMarkdownからのHTML化→GitHub上に公開
+
+* おもに、r-ngtmさんの「[GitBookでWebサイトを作ってGitHub Pagesで公開する方法](https://r-ngtm.hatenablog.com/entry/2020/06/18/193235)」（2020-06-18）を参照
+* Windows環境でPowerShellを使用
+ * `npm init` できない場合、PowerShellを管理者として実行。`Set-ExecutionPolicy Unrestricted` で実行ポリシーを変更
+* `TypeError: cb.apply is not a function` → [「node.jsのバージジョンを下げたらエラーが解消」との記述](https://teratail.com/questions/279576)を見つけたので、最新版をアンインストールしてから、[少し古いバージョン](https://nodejs.org/ja/download/releases/)を再インストール
+* `Error: ENOENT: no such file or directory, * '* \gitbook\gitbook-plugin-fontsettings\fontsettings.js'` → [GitBook で 'no such file or directory' というエラーが表示される](http://kuttsun.blogspot.com/2018/06/gitbook-no-such-file-or-directory.html)
+* [Gitのインストール](https://notepad-plus-plus.org/downloads/)
+ * エディタは[Notepad++](https://notepad-plus-plus.org/downloads/)などにしておく
+ * `git commit` で `Author identity unknown` と言われたら、指示されたとおりに入力
+
+* [MathJax](https://github.com/GitbookIO/plugin-mathjax)で綺麗な数式が表示できる
+ * [「コードブロックの言語指定に "math" を指定することでTeX記法を用いて数式を記述」](https://qiita.com/Qiita/items/c686397e4a0f4f11683d#%E6%95%B0%E5%BC%8F%E3%81%AE%E6%8C%BF%E5%85%A5)との情報あり（詳細未確認）
+* Markdownの作成
+ * ChromeやFirefoxの拡張機能「Markdown Viewer」を利用してプレビュー
+
+````
+cd c://dir
+
+npm install mathjax@2.7.6
+gitbook install
+gitbook build . docs
+
+git remote add origin https://github.com/kurodaecon/stat.git
+git add .
+git commit -m "comment"
+git push origin master
+````
