@@ -1,6 +1,6 @@
-# Top
+ï»¿# Top
 
-M—p‚µ‚È‚¢‚Å‚­‚¾‚³‚¢B
+ä¿¡ç”¨ã—ãªã„ã§ãã ã•ã„ã€‚
 Don't trust the contents.
 
 Memorandum/Note of Statistics and Econometrics
