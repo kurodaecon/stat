@@ -19,11 +19,11 @@
 ````
 cd c://dir
 
+git remote add origin https://github.com/kurodaecon/stat.git
 npm install mathjax@2.7.6
 gitbook install
-gitbook build . docs
 
-git remote add origin https://github.com/kurodaecon/stat.git
+gitbook build . docs
 git add .
 git commit -m "comment"
 git push origin master
