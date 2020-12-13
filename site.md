@@ -10,7 +10,6 @@
 * [Gitのインストール](https://notepad-plus-plus.org/downloads/)
  * エディタは[Notepad++](https://notepad-plus-plus.org/downloads/)などにしておく
  * `git commit` で `Author identity unknown` と言われたら、指示されたとおりに入力
-
 * [MathJax](https://github.com/GitbookIO/plugin-mathjax)で綺麗な数式が表示できる
  * book.json にプラグインとして追加する：
 ````
