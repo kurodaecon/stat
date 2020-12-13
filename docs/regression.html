@@ -187,6 +187,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="&#x7DDA;&#x5F62;&#x56DE;&#x5E30;&#x30E2;&#x30C7;&#x30EB;">&#x7DDA;&#x5F62;&#x56DE;&#x5E30;&#x30E2;&#x30C7;&#x30EB;</h1>
+<p><script type="math/tex; "> f(x) = \int dx </script> &#x2190; &#x3053;&#x3053;&#x306B;&#x6570;&#x5F0F;&#x306E;&#x3088;&#x3046;&#x306A;&#x3082;&#x306E;&#x304C;&#x8868;&#x793A;&#x3055;&#x308C;&#x3066;&#x3044;&#x306A;&#x3044;&#x5834;&#x5408;&#x306F;&#x3001;&#x304A;&#x624B;&#x6570;&#x3067;&#x3059;&#x304C;&#x3053;&#x306E;&#x30DA;&#x30FC;&#x30B8;&#x3092;&#x518D;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#xFF08;F5&#xFF09;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;&#x6570;&#x5F0F;&#x306E;&#x8868;&#x793A;&#x30A8;&#x30E9;&#x30FC;&#x304C;&#x751F;&#x3058;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;</p>
 <h2 id="&#x53C2;&#x8003;&#x6587;&#x732E;">&#x53C2;&#x8003;&#x6587;&#x732E;</h2>
 <ul>
 <li>&#x7530;&#x4E2D;&#x9686;&#x4E00;&#x300E;<a href="http://www.yuhikaku.co.jp/books/detail/9784641150287" target="_blank">&#x8A08;&#x91CF;&#x7D4C;&#x6E08;&#x5B66;&#x306E;&#x7B2C;&#x4E00;&#x6B69;</a>&#x300F;&#x6709;&#x6590;&#x95A3;&#x3001;2015&#xFF0E;<ul>
@@ -264,15 +265,19 @@
 <li>OLS: <script type="math/tex; "> \mbox{Minimize}_{\mathbf{b}} S(\mathbf{b}) </script><ul>
 <li><script type="math/tex; "> S(\mathbf{b}) \equiv \mathbf{e}' \mathbf{e} = (\mathbf{y} - \mathbf{Xb})'(\mathbf{y} - \mathbf{Xb}) = \sum_{i = 1}^{n} e_{i}^2 = \sum_{i = 1}^{n} (y_{i} - \mathbf{x}'_i \mathbf{b})^2 </script></li>
 <li><script type="math/tex; "> S(\mathbf{b}) = \mathbf{y}' \mathbf{y} - 2 \mathbf{y}' \mathbf{Xb} + \mathbf{b' X' X b} </script></li>
-<li>&#x6B8B;&#x5DEE;&#x4E8C;&#x4E57;&#x548C;&#x304C;&#x6700;&#x5C0F; &#x21D4; &#x5FAE;&#x5206;&#x3057;&#x3066;0&#xFF1A;<script type="math/tex; "> \frac{\partial S(\mathbf{b})}{\partial \mathbf{b}} = -2 \mathbf{X' y} + 2 \mathbf{X' X b} = \mathbf{0} </script></li>
+<li>&#x6B8B;&#x5DEE;&#x4E8C;&#x4E57;&#x548C;&#x304C;&#x6700;&#x5C0F; &#x21D4; &#x5FAE;&#x5206;&#x3057;&#x3066;0&#xFF1A;<script type="math/tex; "> \frac{\partial S(\mathbf{b})}{\partial \mathbf{b}} = -2 \mathbf{X' y} + 2 \mathbf{X' X b} = \mathbf{0} </script><ul>
 <li>&#x300C;&#x6700;&#x5927;&#x300D;&#x3067;&#x306F;&#x306A;&#x304F;&#x300C;&#x6700;&#x5C0F;&#x300D;&#x3067;&#x3042;&#x308B;&#x305F;&#x3081;&#x306B;&#x306F;2&#x968E;&#x5FAE;&#x5206;&#x304C;&#x6B63;&#x5B9A;&#x5024;&#x884C;&#x5217;&#x3067;&#x3042;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308A;&#x3001;&#x3053;&#x308C;&#x3082;&#x78BA;&#x8A8D;&#x53EF;</li>
+</ul>
+</li>
 <li>&#x6B63;&#x898F;&#x65B9;&#x7A0B;&#x5F0F;&#xFF1A;<script type="math/tex; "> \mathbf{X' y} = \mathbf{X' X b} </script></li>
-<li>OLS&#x63A8;&#x5B9A;&#x91CF;&#xFF1A;<script type="math/tex; "> \mathbf{b} = (\mathbf{X' X})^{-1} \mathbf{X' y} = \boldsymbol{\beta} + \mathbf{A} \boldsymbol{\epsilon} </script>&#xFF1A;&#x7DDA;&#x5F62;&#x63A8;&#x5B9A;&#x91CF;</li>
+<li>OLS&#x63A8;&#x5B9A;&#x91CF;&#xFF1A;<script type="math/tex; "> \mathbf{b} = (\mathbf{X' X})^{-1} \mathbf{X' y} = \boldsymbol{\beta} + \mathbf{A} \boldsymbol{\epsilon} </script>&#xFF1A;&#x7DDA;&#x5F62;&#x63A8;&#x5B9A;&#x91CF;<ul>
 <li><script type="math/tex; "> \mathbf{A} \equiv (\mathbf{X' X})^{-1} \mathbf{X'} </script></li>
+</ul>
+</li>
 <li>OLS&#x63A8;&#x5B9A;&#x91CF;&#x306E;&#x671F;&#x5F85;&#x5024;&#xFF1A;<script type="math/tex; "> E[\mathbf{b} | \mathbf{X}] = \boldsymbol{\beta} </script>&#xFF1A;&#x4E0D;&#x504F;&#x63A8;&#x5B9A;&#x91CF;</li>
 <li>OLS&#x63A8;&#x5B9A;&#x91CF;&#x306E;&#x5206;&#x6563;&#xFF1A;<script type="math/tex; "> \mbox{Var}[\mathbf{b} | \mathbf{X}]
  = E[(\mathbf{b} - \boldsymbol{\beta}) (\mathbf{b} - \boldsymbol{\beta})' | \mathbf{X}]
- <!-- = E[\mathbf{A} \boldsymbol{\epsilon} \boldsymbol{\epsilon}' \mathbf{A}' | \mathbf{X}] -->
+ = E[\mathbf{A} \boldsymbol{\epsilon} \boldsymbol{\epsilon}' \mathbf{A}' | \mathbf{X}]
  = \mathbf{A} E[\boldsymbol{\epsilon} \boldsymbol{\epsilon}' | \mathbf{X}] \mathbf{A}'
  = \sigma^2 (\mathbf{X' X})^{-1} </script></li>
 </ul>
@@ -288,10 +293,15 @@
 </li>
 <li>&#x56DE;&#x5E30;&#x4FC2;&#x6570;&#x306E;&#x691C;&#x5B9A;&#xFF1A;<script type="math/tex; "> b_k \sim N(\beta_K, \sigma^2 S^{kk}), \quad z_k = \frac{b_k - \beta_k}{\sqrt{\sigma^2 S^{kk}}} </script><ul>
 <li><script type="math/tex; "> S^{kk} </script>: <script type="math/tex; "> k </script>-th diagonal element of <script type="math/tex; "> (\mathbf{X' X})^{-1} </script></li>
-<li>95%&#x4FE1;&#x983C;&#x533A;&#x9593;&#xFF1A;<script type="math/tex; "> \mbox{Prob}[-1.96 \le z_k \le 1.96] = \mbox{Prob}[b_k -1.96 \sqrt{\sigma^2 S^{kk}} \le \beta_k \le b_k + 1.96 \sqrt{\sigma^2 S^{kk}}] = 0.95 </script></li>
+<li>95%&#x4FE1;&#x983C;&#x533A;&#x9593;&#xFF1A;<script type="math/tex; "> \mbox{Prob}[-1.96 \le z_k \le 1.96] = 0.95 </script><ul>
+<li><script type="math/tex; "> \mbox{Prob}[b_k -1.96 \sqrt{\sigma^2 S^{kk}} \le \beta_k \le b_k + 1.96 \sqrt{\sigma^2 S^{kk}}] = 0.95 </script></li>
+</ul>
+</li>
 <li><script type="math/tex; "> t_k = \frac{b_k - \beta_k}{\sqrt{\sigma^2 S^{kk}}} \sim t(n - K) </script></li>
-<li><script type="math/tex; "> \mbox{Prob}[b_k - t_{1-\alpha/2,n-K} \sqrt{\sigma^2 S^{kk}} \le \beta_k \le b_k + t_{1-\alpha/2,n-K} \sqrt{\sigma^2 S^{kk}}] = 1 - \alpha </script></li>
+<li><script type="math/tex; "> \mbox{Prob}[b_k - t_{1-\alpha/2,n-K} \sqrt{\sigma^2 S^{kk}} \le \beta_k \le b_k + t_{1-\alpha/2,n-K} \sqrt{\sigma^2 S^{kk}}] = 1 - \alpha </script><ul>
 <li><script type="math/tex; "> \alpha </script>&#xFF1A;&#x6709;&#x610F;&#x6C34;&#x6E96;&#xFF08;5%&#x306A;&#x3069;&#xFF09;</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>Joint&#x691C;&#x5B9A;&#xFF1A;<script type="math/tex; "> H_0: \mathbf{R} \boldsymbol{\beta} - \mathbf{q} = \mathbf{0} </script></li>
@@ -339,7 +349,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"線形回帰","level":"1.2","depth":1,"next":{"title":"Heckit","level":"1.3","depth":1,"path":"heckit.md","ref":"heckit.md","articles":[]},"previous":{"title":"Top","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"regression.md","mtime":"2020-12-13T07:31:47.123Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-13T07:32:22.424Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"線形回帰","level":"1.2","depth":1,"next":{"title":"Heckit","level":"1.3","depth":1,"path":"heckit.md","ref":"heckit.md","articles":[]},"previous":{"title":"Top","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"regression.md","mtime":"2020-12-13T08:03:52.103Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-13T08:06:31.966Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

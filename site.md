@@ -18,7 +18,6 @@
     "plugins":["mathjax"]
 }
 ````
- * [「コードブロックの言語指定に "math" を指定することでTeX記法を用いて数式を記述」](https://qiita.com/Qiita/items/c686397e4a0f4f11683d#%E6%95%B0%E5%BC%8F%E3%81%AE%E6%8C%BF%E5%85%A5)との情報あり（詳細未確認）
 * Markdownの作成
  * ChromeやFirefoxの拡張機能「Markdown Viewer」を利用してプレビュー
  * .md ファイルは（sjisではなく）UTF-8N (BOMなし) で保存

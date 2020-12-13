@@ -1,5 +1,6 @@
 # 線形回帰モデル
 
+$$ f(x) = \int dx $$ ← ここに数式のようなものが表示されていない場合は、お手数ですがこのページを再読み込み（F5）してください。数式の表示エラーが生じています。
 
 
 ## 参考文献
@@ -55,33 +56,34 @@ $$ \mathbf{y} = \mathbf{x}_1 \beta_1 + \cdots + \mathbf{x}_K \beta_K + \boldsymb
 最小二乗法 [Greene, pp. 28ff]
 
 * $$ y_i = \mathbf{x}'_i \mathbf{b} + e_i $$
- * $$ y_i = \mathbf{x}'_i \boldsymbol{\beta} + \epsilon_i = \mathbf{x}'_i \mathbf{b} + e_i $$
- * $$ e $$: 残差 residual
- * $$ b $$: 回帰パラメータの推定量 estimator
+    * $$ y_i = \mathbf{x}'_i \boldsymbol{\beta} + \epsilon_i = \mathbf{x}'_i \mathbf{b} + e_i $$
+    * $$ e $$: 残差 residual
+    * $$ b $$: 回帰パラメータの推定量 estimator
 * OLS: $$ \mbox{Minimize}_{\mathbf{b}} S(\mathbf{b}) $$
- * $$ S(\mathbf{b}) \equiv \mathbf{e}' \mathbf{e} = (\mathbf{y} - \mathbf{Xb})'(\mathbf{y} - \mathbf{Xb}) = \sum_{i = 1}^{n} e_{i}^2 = \sum_{i = 1}^{n} (y_{i} - \mathbf{x}'_i \mathbf{b})^2 $$
- * $$ S(\mathbf{b}) = \mathbf{y}' \mathbf{y} - 2 \mathbf{y}' \mathbf{Xb} + \mathbf{b' X' X b} $$
- * 残差二乗和が最小 ⇔ 微分して0：$$ \frac{\partial S(\mathbf{b})}{\partial \mathbf{b}} = -2 \mathbf{X' y} + 2 \mathbf{X' X b} = \mathbf{0} $$
-  * 「最大」ではなく「最小」であるためには2階微分が正定値行列である必要があり、これも確認可
- * 正規方程式：$$ \mathbf{X' y} = \mathbf{X' X b} $$
- * OLS推定量：$$ \mathbf{b} = (\mathbf{X' X})^{-1} \mathbf{X' y} = \boldsymbol{\beta} + \mathbf{A} \boldsymbol{\epsilon} $$：線形推定量
-  * $$ \mathbf{A} \equiv (\mathbf{X' X})^{-1} \mathbf{X'} $$
- * OLS推定量の期待値：$$ E[\mathbf{b} | \mathbf{X}] = \boldsymbol{\beta} $$：不偏推定量
- * OLS推定量の分散：$$ \mbox{Var}[\mathbf{b} | \mathbf{X}]
+    * $$ S(\mathbf{b}) \equiv \mathbf{e}' \mathbf{e} = (\mathbf{y} - \mathbf{Xb})'(\mathbf{y} - \mathbf{Xb}) = \sum_{i = 1}^{n} e_{i}^2 = \sum_{i = 1}^{n} (y_{i} - \mathbf{x}'_i \mathbf{b})^2 $$
+    * $$ S(\mathbf{b}) = \mathbf{y}' \mathbf{y} - 2 \mathbf{y}' \mathbf{Xb} + \mathbf{b' X' X b} $$
+    * 残差二乗和が最小 ⇔ 微分して0：$$ \frac{\partial S(\mathbf{b})}{\partial \mathbf{b}} = -2 \mathbf{X' y} + 2 \mathbf{X' X b} = \mathbf{0} $$
+        * 「最大」ではなく「最小」であるためには2階微分が正定値行列である必要があり、これも確認可
+    * 正規方程式：$$ \mathbf{X' y} = \mathbf{X' X b} $$
+    * OLS推定量：$$ \mathbf{b} = (\mathbf{X' X})^{-1} \mathbf{X' y} = \boldsymbol{\beta} + \mathbf{A} \boldsymbol{\epsilon} $$：線形推定量
+        * $$ \mathbf{A} \equiv (\mathbf{X' X})^{-1} \mathbf{X'} $$
+    * OLS推定量の期待値：$$ E[\mathbf{b} | \mathbf{X}] = \boldsymbol{\beta} $$：不偏推定量
+    * OLS推定量の分散：$$ \mbox{Var}[\mathbf{b} | \mathbf{X}]
  = E[(\mathbf{b} - \boldsymbol{\beta}) (\mathbf{b} - \boldsymbol{\beta})' | \mathbf{X}]
- <!-- = E[\mathbf{A} \boldsymbol{\epsilon} \boldsymbol{\epsilon}' \mathbf{A}' | \mathbf{X}] -->
+ = E[\mathbf{A} \boldsymbol{\epsilon} \boldsymbol{\epsilon}' \mathbf{A}' | \mathbf{X}]
  = \mathbf{A} E[\boldsymbol{\epsilon} \boldsymbol{\epsilon}' | \mathbf{X}] \mathbf{A}'
  = \sigma^2 (\mathbf{X' X})^{-1} $$
 * 決定係数：$$ R^2 = \frac{\mbox{regression sum of squares}}{\mbox{total sum of squares}} = 1 - \frac{\sum e_i^2}{\sum (y_i - \bar{y})^2} $$
- * 自由度調整済み決定係数：$$ \bar{R}^2 = 1 - \frac{n - 1}{n - K} (1 - R^2) $$
+    * 自由度調整済み決定係数：$$ \bar{R}^2 = 1 - \frac{n - 1}{n - K} (1 - R^2) $$
 * ガウス・マルコフの定理により、OLS推定量はBLUE (best lenear unbiased estimator)
- * 線形性と不偏性は上記のとおり
- * 最小分散 (best)：線形で不偏なより一般的な推定量 $$ \mathbf{b}_0 = \mathbf{Cy} $$ を考え、その分散がOLS推定量の分散より小さくすることはできないことを示すことができる
+    * 線形性と不偏性は上記のとおり
+    * 最小分散 (best)：線形で不偏なより一般的な推定量 $$ \mathbf{b}_0 = \mathbf{Cy} $$ を考え、その分散がOLS推定量の分散より小さくすることはできないことを示すことができる
 * 回帰係数の検定：$$ b_k \sim N(\beta_K, \sigma^2 S^{kk}), \quad z_k = \frac{b_k - \beta_k}{\sqrt{\sigma^2 S^{kk}}} $$
- * $$ S^{kk} $$: $$ k $$-th diagonal element of $$ (\mathbf{X' X})^{-1} $$
- * 95%信頼区間：$$ \mbox{Prob}[-1.96 \le z_k \le 1.96] = \mbox{Prob}[b_k -1.96 \sqrt{\sigma^2 S^{kk}} \le \beta_k \le b_k + 1.96 \sqrt{\sigma^2 S^{kk}}] = 0.95 $$
- * $$ t_k = \frac{b_k - \beta_k}{\sqrt{\sigma^2 S^{kk}}} \sim t(n - K) $$
- * $$ \mbox{Prob}[b_k - t_{1-\alpha/2,n-K} \sqrt{\sigma^2 S^{kk}} \le \beta_k \le b_k + t_{1-\alpha/2,n-K} \sqrt{\sigma^2 S^{kk}}] = 1 - \alpha $$
-  * $$ \alpha $$：有意水準（5%など）
+    * $$ S^{kk} $$: $$ k $$-th diagonal element of $$ (\mathbf{X' X})^{-1} $$
+    * 95%信頼区間：$$ \mbox{Prob}[-1.96 \le z_k \le 1.96] = 0.95 $$
+        * $$ \mbox{Prob}[b_k -1.96 \sqrt{\sigma^2 S^{kk}} \le \beta_k \le b_k + 1.96 \sqrt{\sigma^2 S^{kk}}] = 0.95 $$
+    * $$ t_k = \frac{b_k - \beta_k}{\sqrt{\sigma^2 S^{kk}}} \sim t(n - K) $$
+    * $$ \mbox{Prob}[b_k - t_{1-\alpha/2,n-K} \sqrt{\sigma^2 S^{kk}} \le \beta_k \le b_k + t_{1-\alpha/2,n-K} \sqrt{\sigma^2 S^{kk}}] = 1 - \alpha $$
+        * $$ \alpha $$：有意水準（5%など）
 * Joint検定：$$ H_0: \mathbf{R} \boldsymbol{\beta} - \mathbf{q} = \mathbf{0} $$
 
