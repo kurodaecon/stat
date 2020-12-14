@@ -16,5 +16,16 @@ James J. Heckman, the Nobel laureate による2段階推定。通称Heckit（ヘ
 
 ## 概要
 
-$$ f(k) = {n \choose k} p^{k} (1-p)^{n-k} $$
+ある条件を満たす場合しかデータが観測されない場合がある。
 
+たとえば、賃金関数を推定する場合。就労していない人の賃金は観測されない。「就労しているかどうか」が完全にランダムに（外生的に）決定されるのであれば、観測されるデータ（就労している人の分）だけを使って賃金関数を推計することで何ら問題はないが、現実にはランダムではない。このような場合、サンプルセレクション sample selection の問題が生じる。
+
+$$ Y_i = \begin{cases} \beta_0 + \beta_1 x_i + u_i \quad \mbox{if} \quad M_i = 1 \\ . \quad \mbox{if} \quad M_i = 0 \end{cases} $$
+
+$$ M_i = \begin{cases} 1 \quad \mbox{if} \quad M_i^* > m \\ 0 \quad \mbox{if} \quad M_i^* \le m \end{cases} , \quad M_i^* = \alpha + \beta z_i + v_i $$
+
+$$ a \text{ if } b $$
+
+* $$ Y_i $$: 観測される賃金（観測されない `.` 場合もある）
+* $$ x_i^* $$: 個人属性（教育年数など）
+* $$ M_i = 1 $$ if in labor force （就労）

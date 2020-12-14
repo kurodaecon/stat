@@ -220,9 +220,9 @@
 </li>
 </ul>
 <h2 id="&#x57FA;&#x790E;">&#x57FA;&#x790E;</h2>
-<p>&#x30CE;&#x30FC;&#x30C6;&#x30FC;&#x30B7;&#x30E7;&#x30F3; [Greene, pp. 13ff]</p>
+<h3 id="&#x30CE;&#x30FC;&#x30C6;&#x30FC;&#x30B7;&#x30E7;&#x30F3;-greene-pp-13ff">&#x30CE;&#x30FC;&#x30C6;&#x30FC;&#x30B7;&#x30E7;&#x30F3; [Greene, pp. 13ff]</h3>
 <p><script type="math/tex; "> y = x_1 \beta_1 + \cdots + x_K \beta_K + \epsilon = \mathbf{x}' \boldsymbol{\beta} + \epsilon </script></p>
-<p><script type="math/tex; "> \mathbf{y} = \mathbf{x}_1 \beta_1 + \cdots + \mathbf{x}_K \beta_K + \boldsymbol{\epsilon} = \mathbf{X} \boldsymbol{\beta} + \boldsymbol{\epsilon} </script></p>
+<p><script type="math/tex; "> \mathbf{y} = \mathbf{x}_1 \beta_1 + \cdots + \mathbf{x}_K \beta_K + \boldsymbol{\epsilon} = \begin{bmatrix} \mathbf{x}_1 & \mathbf{x}_2 & \cdots & \mathbf{x}_K \end{bmatrix} \begin{bmatrix} \beta_1 \\ \beta_2 \\ \vdots \\ \beta_K \end{bmatrix} + \boldsymbol{\epsilon} = \mathbf{X} \boldsymbol{\beta} + \boldsymbol{\epsilon} </script></p>
 <ul>
 <li><script type="math/tex; "> n </script>: observations</li>
 <li><script type="math/tex; "> K </script>: variables (include intercept)</li>
@@ -231,8 +231,8 @@
 </ul>
 </li>
 <li><script type="math/tex; "> x_1, \ldots, x_K </script>: &#x8AAC;&#x660E;&#x5909;&#x6570;, independent variable, explanatory variable, regressors<ul>
-<li><script type="math/tex; "> \mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_K \end{bmatrix}, \quad
- \mathbf{X} = \begin{bmatrix}
+<li><script type="math/tex; "> \mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}, \quad
+ \mathbf{X} = \begin{bmatrix} \mathbf{x}_1 & \mathbf{x}_2 & \cdots & \mathbf{x}_K \end{bmatrix} = \begin{bmatrix}
  x_{11} & x_{12} & \cdots & x_{1K} \\
  x_{21} & x_{22} & \cdots & x_{2K} \\
  \vdots & \vdots & \ddots & \vdots \\
@@ -243,9 +243,19 @@
 <li><script type="math/tex; "> \boldsymbol{\epsilon} = \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \vdots \\ \epsilon_n \end{bmatrix} </script>: <script type="math/tex; "> n \times 1 </script> vector</li>
 </ul>
 </li>
-<li><script type="math/tex; "> \boldsymbol{\beta} = \begin{bmatrix} \beta_1 \\ \beta_2 \\ \vdots \\ \beta_K \end{bmatrix} </script>: <script type="math/tex; "> K \times 1 </script> vector of coefficient</li>
+<li><script type="math/tex; "> \boldsymbol{\beta} = \begin{bmatrix} \beta_1 \\ \beta_2 \\ \vdots \\ \beta_K \end{bmatrix} </script>: <script type="math/tex; "> K \times 1 </script> vector &#xFF08;&#x56DE;&#x5E30;&#x4FC2;&#x6570;&#xFF09;</li>
 </ul>
-<p>&#x7DDA;&#x5F62;&#x56DE;&#x5E30;&#x30E2;&#x30C7;&#x30EB;&#x306E;&#x4EEE;&#x5B9A; [Greene, pp. 17ff, p. 55]</p>
+<p>&#x203B;&#x884C;&#x5217;&#x6F14;&#x7B97;</p>
+<ul>
+<li><script type="math/tex; "> \{AB\}_{ij} = \sum_{l = 1}^{m} \{A\}_{il} \{B\}_{lj} </script><ul>
+<li><script type="math/tex; "> A: n \times m, \quad B: m \times k, \quad AB: n \times k </script></li>
+</ul>
+</li>
+<li><script type="math/tex; "> A' </script> or <script type="math/tex; "> A^T </script>&#xFF1A;&#x8EE2;&#x7F6E; ... <script type="math/tex; "> \{A'\}_{ij} = \{A\}_{ji}</script></li>
+<li><script type="math/tex; "> I </script> or <script type="math/tex; "> E </script>&#xFF1A;&#x5358;&#x4F4D;&#x884C;&#x5217; ... <script type="math/tex; "> AI = IA = A </script></li>
+<li><script type="math/tex; "> A^{-1} </script>&#xFF1A;&#x9006;&#x884C;&#x5217; ... <script type="math/tex; "> A^{-1} A = A A^{-1} = I </script></li>
+</ul>
+<h3 id="&#x7DDA;&#x5F62;&#x56DE;&#x5E30;&#x30E2;&#x30C7;&#x30EB;&#x306E;&#x4EEE;&#x5B9A;-greene-pp-17ff-p-55">&#x7DDA;&#x5F62;&#x56DE;&#x5E30;&#x30E2;&#x30C7;&#x30EB;&#x306E;&#x4EEE;&#x5B9A; [Greene, pp. 17ff, p. 55]</h3>
 <ul>
 <li>A1. &#x7DDA;&#x5F62;&#x6027;&#xFF1A;<script type="math/tex; "> \mathbf{y} = \mathbf{X} \boldsymbol{\beta} + \boldsymbol{\epsilon} </script></li>
 <li>A2. &#x30D5;&#x30EB;&#x30E9;&#x30F3;&#x30AF;&#xFF1A;<script type="math/tex; "> E[\mathbf{xx}'] = \mathbf{Q} </script> &#xFF08;<script type="math/tex; "> K \times K </script> &#x306E;&#x884C;&#x5217;&#xFF09;&#x304C;&#x30D5;&#x30EB;&#x30E9;&#x30F3;&#x30AF;&#x3001;&#x3059;&#x306A;&#x308F;&#x3061; <script type="math/tex; "> \mbox{rank}(\mathbf{Q}) = K </script></li>
@@ -254,7 +264,7 @@
 <li>A5. &#x30C7;&#x30FC;&#x30BF;&#x751F;&#x6210;&#x904E;&#x7A0B;&#xFF1A;&#x975E;&#x78BA;&#x7387;&#x7684;&#x306A;&#x3001;<script type="math/tex; "> (y, \mathbf{x}) </script> &#x306E;&#x7D50;&#x5408;&#x5206;&#x5E03;&#x304B;&#x3089;&#x306E; iid (independent, identically distributed) &#x30C9;&#x30ED;&#x30FC;&#x306E;&#x30E9;&#x30F3;&#x30C0;&#x30E0;&#x6A19;&#x672C;</li>
 <li>A6. &#x8AA4;&#x5DEE;&#x9805;&#x306E;&#x6B63;&#x898F;&#x6027;&#xFF1A;<script type="math/tex; "> \epsilon \sim N(\mathbf{x}' \boldsymbol{\beta}, \sigma^2) </script></li>
 </ul>
-<p>&#x6700;&#x5C0F;&#x4E8C;&#x4E57;&#x6CD5; [Greene, pp. 28ff]</p>
+<h3 id="&#x6700;&#x5C0F;&#x4E8C;&#x4E57;&#x6CD5;-greene-pp-28ff">&#x6700;&#x5C0F;&#x4E8C;&#x4E57;&#x6CD5; [Greene, pp. 28ff]</h3>
 <ul>
 <li><script type="math/tex; "> y_i = \mathbf{x}'_i \mathbf{b} + e_i </script><ul>
 <li><script type="math/tex; "> y_i = \mathbf{x}'_i \boldsymbol{\beta} + \epsilon_i = \mathbf{x}'_i \mathbf{b} + e_i </script></li>
@@ -263,18 +273,18 @@
 </ul>
 </li>
 <li>OLS: <script type="math/tex; "> \mbox{Minimize}_{\mathbf{b}} S(\mathbf{b}) </script><ul>
-<li><script type="math/tex; "> S(\mathbf{b}) \equiv \mathbf{e}' \mathbf{e} = (\mathbf{y} - \mathbf{Xb})'(\mathbf{y} - \mathbf{Xb}) = \sum_{i = 1}^{n} e_{i}^2 = \sum_{i = 1}^{n} (y_{i} - \mathbf{x}'_i \mathbf{b})^2 </script></li>
+<li><script type="math/tex; "> S(\mathbf{b}) \equiv \mathbf{e}' \mathbf{e} = (\mathbf{y} - \mathbf{Xb})'(\mathbf{y} - \mathbf{Xb}) = \sum e_{i}^2 = \sum (y_{i} - \mathbf{x}'_i \mathbf{b})^2 </script></li>
 <li><script type="math/tex; "> S(\mathbf{b}) = \mathbf{y}' \mathbf{y} - 2 \mathbf{y}' \mathbf{Xb} + \mathbf{b' X' X b} </script></li>
 <li>&#x6B8B;&#x5DEE;&#x4E8C;&#x4E57;&#x548C;&#x304C;&#x6700;&#x5C0F; &#x21D4; &#x5FAE;&#x5206;&#x3057;&#x3066;0&#xFF1A;<script type="math/tex; "> \frac{\partial S(\mathbf{b})}{\partial \mathbf{b}} = -2 \mathbf{X' y} + 2 \mathbf{X' X b} = \mathbf{0} </script><ul>
 <li>&#x300C;&#x6700;&#x5927;&#x300D;&#x3067;&#x306F;&#x306A;&#x304F;&#x300C;&#x6700;&#x5C0F;&#x300D;&#x3067;&#x3042;&#x308B;&#x305F;&#x3081;&#x306B;&#x306F;2&#x968E;&#x5FAE;&#x5206;&#x304C;&#x6B63;&#x5B9A;&#x5024;&#x884C;&#x5217;&#x3067;&#x3042;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308A;&#x3001;&#x3053;&#x308C;&#x3082;&#x78BA;&#x8A8D;&#x53EF;</li>
 </ul>
 </li>
 <li>&#x6B63;&#x898F;&#x65B9;&#x7A0B;&#x5F0F;&#xFF1A;<script type="math/tex; "> \mathbf{X' y} = \mathbf{X' X b} </script></li>
-<li>OLS&#x63A8;&#x5B9A;&#x91CF;&#xFF1A;<script type="math/tex; "> \mathbf{b} = (\mathbf{X' X})^{-1} \mathbf{X' y} = \boldsymbol{\beta} + \mathbf{A} \boldsymbol{\epsilon} </script>&#xFF1A;&#x7DDA;&#x5F62;&#x63A8;&#x5B9A;&#x91CF;<ul>
+<li>OLS&#x63A8;&#x5B9A;&#x91CF;&#xFF1A;<script type="math/tex; "> \mathbf{b} = (\mathbf{X' X})^{-1} \mathbf{X' y} = \boldsymbol{\beta} + \mathbf{A} \boldsymbol{\epsilon} </script> &#x2190; &#x7DDA;&#x5F62;&#x63A8;&#x5B9A;&#x91CF;<ul>
 <li><script type="math/tex; "> \mathbf{A} \equiv (\mathbf{X' X})^{-1} \mathbf{X'} </script></li>
 </ul>
 </li>
-<li>OLS&#x63A8;&#x5B9A;&#x91CF;&#x306E;&#x671F;&#x5F85;&#x5024;&#xFF1A;<script type="math/tex; "> E[\mathbf{b} | \mathbf{X}] = \boldsymbol{\beta} </script>&#xFF1A;&#x4E0D;&#x504F;&#x63A8;&#x5B9A;&#x91CF;</li>
+<li>OLS&#x63A8;&#x5B9A;&#x91CF;&#x306E;&#x671F;&#x5F85;&#x5024;&#xFF1A;<script type="math/tex; "> E[\mathbf{b} | \mathbf{X}] = \boldsymbol{\beta} </script> &#x2190; &#x4E0D;&#x504F;&#x63A8;&#x5B9A;&#x91CF;</li>
 <li>OLS&#x63A8;&#x5B9A;&#x91CF;&#x306E;&#x5206;&#x6563;&#xFF1A;<script type="math/tex; "> \mbox{Var}[\mathbf{b} | \mathbf{X}]
  = E[(\mathbf{b} - \boldsymbol{\beta}) (\mathbf{b} - \boldsymbol{\beta})' | \mathbf{X}]
  = E[\mathbf{A} \boldsymbol{\epsilon} \boldsymbol{\epsilon}' \mathbf{A}' | \mathbf{X}]
@@ -286,7 +296,7 @@
 <li>&#x81EA;&#x7531;&#x5EA6;&#x8ABF;&#x6574;&#x6E08;&#x307F;&#x6C7A;&#x5B9A;&#x4FC2;&#x6570;&#xFF1A;<script type="math/tex; "> \bar{R}^2 = 1 - \frac{n - 1}{n - K} (1 - R^2) </script></li>
 </ul>
 </li>
-<li>&#x30AC;&#x30A6;&#x30B9;&#x30FB;&#x30DE;&#x30EB;&#x30B3;&#x30D5;&#x306E;&#x5B9A;&#x7406;&#x306B;&#x3088;&#x308A;&#x3001;OLS&#x63A8;&#x5B9A;&#x91CF;&#x306F;BLUE (best lenear unbiased estimator)<ul>
+<li>&#x30AC;&#x30A6;&#x30B9;&#x30FB;&#x30DE;&#x30EB;&#x30B3;&#x30D5;&#x306E;&#x5B9A;&#x7406;&#x306B;&#x3088;&#x308A;&#x3001;OLS&#x63A8;&#x5B9A;&#x91CF;&#x306F;BLUE (best linear unbiased estimator)<ul>
 <li>&#x7DDA;&#x5F62;&#x6027;&#x3068;&#x4E0D;&#x504F;&#x6027;&#x306F;&#x4E0A;&#x8A18;&#x306E;&#x3068;&#x304A;&#x308A;</li>
 <li>&#x6700;&#x5C0F;&#x5206;&#x6563; (best)&#xFF1A;&#x7DDA;&#x5F62;&#x3067;&#x4E0D;&#x504F;&#x306A;&#x4E00;&#x822C;&#x7684;&#x306A;&#x63A8;&#x5B9A;&#x91CF; <script type="math/tex; "> \mathbf{b}_0 = \mathbf{Cy} </script> &#x3092;&#x8003;&#x3048;&#x3001;&#x305D;&#x306E;&#x5206;&#x6563;&#x304C;OLS&#x63A8;&#x5B9A;&#x91CF;&#x306E;&#x5206;&#x6563;&#x3088;&#x308A;&#x5C0F;&#x3055;&#x304F;&#x306F;&#x306A;&#x3089;&#x306A;&#x3044;&#x3053;&#x3068;&#x3092;&#x793A;&#x3059;</li>
 </ul>
@@ -306,6 +316,16 @@
 </li>
 <li>Joint&#x691C;&#x5B9A;&#xFF1A;<script type="math/tex; "> H_0: \mathbf{R} \boldsymbol{\beta} - \mathbf{q} = \mathbf{0} </script></li>
 </ul>
+<h2 id="&#x7D71;&#x8A08;&#x30BD;&#x30D5;&#x30C8;&#x30A6;&#x30A7;&#x30A2;">&#x7D71;&#x8A08;&#x30BD;&#x30D5;&#x30C8;&#x30A6;&#x30A7;&#x30A2;</h2>
+<h3 id="r">R</h3>
+<pre><code class="lang-r">lm0 &lt;- lm(y ~ x1 + x2, data = dataset0)
+summary(lm0)
+car::linearHypothesis(lm0, c(<span class="hljs-string">&quot;x1 = 0&quot;</span>, <span class="hljs-string">&quot;x2 = 0&quot;</span>)
+</code></pre>
+<h3 id="stata">Stata</h3>
+<pre><code class="lang-Stata"><span class="hljs-keyword">regress</span> y x1 x2, robust
+<span class="hljs-keyword">test</span> x1 x2 <span class="hljs-comment">// joint test</span>
+</code></pre>
 
                                 
                                 </section>
@@ -349,7 +369,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"線形回帰","level":"1.2","depth":1,"next":{"title":"Heckit","level":"1.3","depth":1,"path":"heckit.md","ref":"heckit.md","articles":[]},"previous":{"title":"Top","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"regression.md","mtime":"2020-12-14T00:15:31.514Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-14T00:17:46.130Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"線形回帰","level":"1.2","depth":1,"next":{"title":"Heckit","level":"1.3","depth":1,"path":"heckit.md","ref":"heckit.md","articles":[]},"previous":{"title":"Top","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"regression.md","mtime":"2020-12-14T01:11:17.918Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-14T01:49:07.163Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
