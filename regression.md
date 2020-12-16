@@ -46,6 +46,19 @@ $$ \mathbf{y} = \mathbf{x}_1 \beta_1 + \cdots + \mathbf{x}_K \beta_K + \boldsymb
 
 * $$ \{AB\}_{ij} = \sum_{l = 1}^{m} \{A\}_{il} \{B\}_{lj} $$
   * $$ A: n \times m, \quad B: m \times k, \quad AB: n \times k $$
+  * $$ \begin{bmatrix}
+ \cdot & \cdot & \cdot & \cdot \\
+ a_{i1} & a_{i2} & \cdots & a_{im} \\
+ \cdot & \cdot & \cdot & \cdot \end{bmatrix}
+ \begin{bmatrix}
+ \cdot & b_{1j} & \cdot \\
+ \cdot & b_{2j} & \cdot \\
+ \cdot & \vdots & \cdot \\
+ \cdot & b_{mj} & \cdot \end{bmatrix} = \begin{bmatrix}
+ \cdot & \cdot & \cdot \\
+ \cdot & \sum a_{il} b_{lj} & \cdot \\
+ \cdot & \cdot & \cdot
+ \end{bmatrix} $$
 * $$ A' $$ or $$ A^T $$：転置 ... $$ \{A'\}_{ij} = \{A\}_{ji}$$
 * $$ I $$ or $$ E $$：単位行列 ... $$ AI = IA = A $$
 * $$ A^{-1} $$：逆行列 ... $$ A^{-1} A = A A^{-1} = I $$
@@ -97,14 +110,16 @@ $$ \mathbf{y} = \mathbf{x}_1 \beta_1 + \cdots + \mathbf{x}_K \beta_K + \boldsymb
 ### R
 
 ```r
-lm0 <- lm(y ~ x1 + x2, data = dataset0)
+lm0 <- lm(formula = Fertility ~ Agriculture + Examination +
+  Education + Catholic + Infant.Mortality, data = swiss)
 summary(lm0)
-car::linearHypothesis(lm0, c("x1 = 0", "x2 = 0")
+car::linearHypothesis(lm0, c("Agriculture = 0", "Examination = 0"))
 ```
 
 ### Stata
 
 ```Stata
-regress y x1 x2, robust
-test x1 x2 // joint test
+sysuse auto, clear
+regress price mpg weight foreign
+test mpg weight  // joint test
 ```

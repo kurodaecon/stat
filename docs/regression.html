@@ -249,6 +249,19 @@
 <ul>
 <li><script type="math/tex; "> \{AB\}_{ij} = \sum_{l = 1}^{m} \{A\}_{il} \{B\}_{lj} </script><ul>
 <li><script type="math/tex; "> A: n \times m, \quad B: m \times k, \quad AB: n \times k </script></li>
+<li><script type="math/tex; "> \begin{bmatrix}
+ \cdot & \cdot & \cdot & \cdot \\
+ a_{i1} & a_{i2} & \cdots & a_{im} \\
+ \cdot & \cdot & \cdot & \cdot \end{bmatrix}
+ \begin{bmatrix}
+ \cdot & b_{1j} & \cdot \\
+ \cdot & b_{2j} & \cdot \\
+ \cdot & \vdots & \cdot \\
+ \cdot & b_{mj} & \cdot \end{bmatrix} = \begin{bmatrix}
+ \cdot & \cdot & \cdot \\
+ \cdot & \sum a_{il} b_{lj} & \cdot \\
+ \cdot & \cdot & \cdot
+ \end{bmatrix} </script></li>
 </ul>
 </li>
 <li><script type="math/tex; "> A' </script> or <script type="math/tex; "> A^T </script>&#xFF1A;&#x8EE2;&#x7F6E; ... <script type="math/tex; "> \{A'\}_{ij} = \{A\}_{ji}</script></li>
@@ -317,13 +330,15 @@
 </ul>
 <h2 id="&#x7D71;&#x8A08;&#x30BD;&#x30D5;&#x30C8;&#x30A6;&#x30A7;&#x30A2;">&#x7D71;&#x8A08;&#x30BD;&#x30D5;&#x30C8;&#x30A6;&#x30A7;&#x30A2;</h2>
 <h3 id="r">R</h3>
-<pre><code class="lang-r">lm0 &lt;- lm(y ~ x1 + x2, data = dataset0)
+<pre><code class="lang-r">lm0 &lt;- lm(formula = Fertility ~ Agriculture + Examination +
+  Education + Catholic + Infant.Mortality, data = swiss)
 summary(lm0)
-car::linearHypothesis(lm0, c(<span class="hljs-string">&quot;x1 = 0&quot;</span>, <span class="hljs-string">&quot;x2 = 0&quot;</span>)
+car::linearHypothesis(lm0, c(<span class="hljs-string">&quot;Agriculture = 0&quot;</span>, <span class="hljs-string">&quot;Examination = 0&quot;</span>))
 </code></pre>
 <h3 id="stata">Stata</h3>
-<pre><code class="lang-Stata"><span class="hljs-keyword">regress</span> y x1 x2, robust
-<span class="hljs-keyword">test</span> x1 x2 <span class="hljs-comment">// joint test</span>
+<pre><code class="lang-Stata"><span class="hljs-keyword">sysuse</span> auto, <span class="hljs-keyword">clear</span>
+<span class="hljs-keyword">regress</span> price mpg weight foreign
+<span class="hljs-keyword">test</span> mpg weight  <span class="hljs-comment">// joint test</span>
 </code></pre>
 
                                 
@@ -368,7 +383,7 @@ car::linearHypothesis(lm0, c(<span class="hljs-string">&quot;x1 = 0&quot;</span>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"線形回帰","level":"1.2","depth":1,"next":{"title":"Heckit","level":"1.3","depth":1,"path":"heckit.md","ref":"heckit.md","articles":[]},"previous":{"title":"Top","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"regression.md","mtime":"2020-12-15T04:59:08.108Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-16T01:29:30.197Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"線形回帰","level":"1.2","depth":1,"next":{"title":"Heckit","level":"1.3","depth":1,"path":"heckit.md","ref":"heckit.md","articles":[]},"previous":{"title":"Top","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"regression.md","mtime":"2020-12-16T01:49:57.598Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-16T01:51:56.631Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
