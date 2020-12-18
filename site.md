@@ -39,3 +39,34 @@ git add .
 git commit -m "m"
 git push origin master
 ````
+
+## TeX
+
+```TeX
+$$ \mathbf{X} \boldsymbol{\beta}
+ = \begin{bmatrix}
+ a_{11} & \cdots & a_{1m} \\
+ \vdots & \ddots & \vdots \\
+ a_{n1} & \cdots & a_{nm}
+\end{bmatrix} $$
+```
+
+$$ \mathbf{X} \boldsymbol{\beta} = \begin{bmatrix} a_{11} & \cdots & a_{1m} \\ \vdots & \ddots & \vdots \\ a_{n1} & \cdots & a_{nm} \end{bmatrix} $$
+
+```TeX
+$$ \begin{align}  % KaTeX parse error が出るのでVSCodeではうまく表示されないが、、
+ a & = b \\
+ c & = d
+\end{align} $$
+```
+
+$$ \begin{align} a & = b \\ c & = d \end{align} $$
+
+```TeX
+$$ y = \begin{cases}
+ 1 \quad \text{if} \ z > 0 \\
+ 0 \quad \text{if} \ z \le 0
+\end{cases} $$
+```
+
+$$ y = \begin{cases} 1 \quad \text{if} \ z > 0 \\ 0 \quad \text{if} \ z \le 0 \end{cases} $$

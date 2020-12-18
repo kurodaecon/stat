@@ -64,9 +64,13 @@ Heckitはサンプルセレクションモデルの一つとして説明され�
 
 ### Tobitモデル [Cameron and Trivedi 2005, Section 16.3]
 
-Tobitモデル、もしくは、censored normal regression model は、潜在変数 latent variable が0未満で censoring （打ち切り）されるケースの一つ。
+Tobitモデル (censored normal regression model) は、潜在変数 (latent variable) が0以下で censoring （打ち切り）されるケースの一つ。
 
 $$ y^{*} = \mathbf{x}' \beta + \epsilon, \quad \epsilon \sim N(0, \sigma^2), \quad y = \begin{cases} y^{*} \quad \text{if } y^{*} > 0 \\ . \text{ (missing)} \quad \text{if } y^{*} \le 0 \end{cases} $$
+
+しれっと $$ \epsilon \sim N $$ を仮定しているが、この仮定が満たされない場合は別の修正を考える必要がある。それはまた別の話（control function approach by Lee; Dahl）。
+
+なお、打ち切り (censoring) と切断 (truncation) は異なる点に注意。切断された分はデータが観測されないが、打ち切りはデータが閾値に張り付く。
 
 0より左側が切断され (left truncation at zero)、$$ y^{*} > 0 $$ の場合に $$y$$ が観測される場合を考える。
 
@@ -76,6 +80,27 @@ $$ \begin{align} E[y]
  & = E[\mathbf{x}' \beta | \mathbf{x}' \beta + \epsilon > 0] + E[\epsilon | \mathbf{x}' \beta + \epsilon > 0]
  = \mathbf{x}' \beta + E[\epsilon | \epsilon > - \mathbf{x}' \beta]
  \end{align} $$
+
+ここで、$$ E[\mathbf{x}' \beta | \mathbf{x}' \beta + \epsilon > 0] = \mathbf{x}' \beta $$ は $$ \mathbf{x} $$ と $$ \epsilon $$ の独立性より（$$ \mathbf{x}' \beta $$ 部分を定数のように考えればよい）。
+
+$$ E[\epsilon | \epsilon > - \mathbf{x}' \beta]
+ = \sigma E[\frac{\epsilon}{\sigma} | \frac{\epsilon}{\sigma} > - \frac{\mathbf{x}' \beta}{\sigma}]
+ = \sigma \frac{\phi(\frac{\mathbf{x}' \beta}{\sigma})}{\Phi(\frac{\mathbf{x}' \beta}{\sigma})}
+ = \sigma \lambda (\frac{\mathbf{x}' \beta}{\sigma})
+$$
+
+この $$ \lambda (z) = \frac{\phi(z)}{\Phi(z)} $$ は逆ミルズ比 (inverse Mills ratio) と呼ばれる。大元の提案者である [John Mills (Biometrika 1926)](https://doi.org/10.1093/biomet/18.3-4.395) はこの逆数である $$ \frac{1 - \Phi(z)}{\phi(z)} = \frac{\Phi(-z)}{\phi(z)} $$ を用いていたため、「逆」と付くとの由。この理由から、一部のテキストでは $$ \lambda^{*}(z) = \frac{\phi(z)}{\Phi(-z)} $$ を逆ミルズ比と呼ぶらしい。
+
+よって、$$ E[y | \mathbf{x}, y > 0] = \mathbf{x}' \beta + \sigma \phi(\frac{\mathbf{x}' \beta}{\sigma}) $$ が得られる。
+
+導出は追わないが、限界効果は以下のとおり。
+
+$$ \frac{\partial}{\partial \mathbf{x}} E[y | \mathbf{x}, y > 0 ] = [1 - \frac{\mathbf{x}' \beta}{\sigma} \lambda (\frac{\mathbf{x}' \beta}{\sigma}) - \lambda (\frac{\mathbf{x}' \beta}{\sigma})^2] \beta $$
+
+推定方法には、最尤法、非線形最小二乗法、Heckmanの2段階推定、などがある。Heckmanの2段階推定について、詳細は後述するが、概要は次の通り。
+
+* 第1段階：Full sample で $$d (=1 \ \text{if} \ y>0)$$ を $$ \mathbf{x} $$ に回帰し、$$ \alpha = \beta/\sigma $$ の一致推定量 $$ \hat{\alpha} $$ を得る
+* 第2段階：Truncated sample で $$y$$ を $$ \mathbf{x}, \lambda(\mathbf{x}' \hat{\alpha}) $$ に回帰し、$$ \beta, \sigma $$ の一致推定量を得る
 
 ## ようやく本題
 

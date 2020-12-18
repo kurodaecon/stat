@@ -231,6 +231,27 @@ git add .
 git commit -m <span class="hljs-string">&quot;m&quot;</span>
 git push origin master
 </code></pre>
+<h2 id="tex">TeX</h2>
+<pre><code class="lang-TeX">{<span class="hljs-comment">% math %} \mathbf{X} \boldsymbol{\beta}</span>
+ = <span class="hljs-tag">\<span class="hljs-name">begin</span><span class="hljs-string">{bmatrix}</span></span>
+ a_{11} &amp; <span class="hljs-tag">\<span class="hljs-name">cdots</span></span> &amp; a_{1m} <span class="hljs-tag">\<span class="hljs-name">\</span></span>
+ <span class="hljs-tag">\<span class="hljs-name">vdots</span></span> &amp; <span class="hljs-tag">\<span class="hljs-name">ddots</span></span> &amp; <span class="hljs-tag">\<span class="hljs-name">vdots</span></span> <span class="hljs-tag">\<span class="hljs-name">\</span></span>
+ a_{n1} &amp; <span class="hljs-tag">\<span class="hljs-name">cdots</span></span> &amp; a_{nm}
+<span class="hljs-tag">\<span class="hljs-name">end</span><span class="hljs-string">{bmatrix}</span></span> {<span class="hljs-comment">% endmath %}</span>
+</code></pre>
+<p><script type="math/tex; "> \mathbf{X} \boldsymbol{\beta} = \begin{bmatrix} a_{11} & \cdots & a_{1m} \\ \vdots & \ddots & \vdots \\ a_{n1} & \cdots & a_{nm} \end{bmatrix} </script></p>
+<pre><code class="lang-TeX">{<span class="hljs-comment">% math %} \begin{align}  % KaTeX parse error &#x304C;&#x51FA;&#x308B;&#x306E;&#x3067;VSCode&#x3067;&#x306F;&#x3046;&#x307E;&#x304F;&#x8868;&#x793A;&#x3055;&#x308C;&#x306A;&#x3044;&#x304C;&#x3001;&#x3001;</span>
+ a &amp; = b <span class="hljs-tag">\<span class="hljs-name">\</span></span>
+ c &amp; = d
+<span class="hljs-tag">\<span class="hljs-name">end</span><span class="hljs-string">{align}</span></span> {<span class="hljs-comment">% endmath %}</span>
+</code></pre>
+<p><script type="math/tex; "> \begin{align} a & = b \\ c & = d \end{align} </script></p>
+<pre><code class="lang-TeX">{<span class="hljs-comment">% math %} y = \begin{cases}</span>
+ 1 <span class="hljs-tag">\<span class="hljs-name">quad</span></span> <span class="hljs-tag">\<span class="hljs-name">text</span><span class="hljs-string">{if}</span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span>z &gt; 0 <span class="hljs-tag">\<span class="hljs-name">\</span></span>
+ 0 <span class="hljs-tag">\<span class="hljs-name">quad</span></span> <span class="hljs-tag">\<span class="hljs-name">text</span><span class="hljs-string">{if}</span></span> <span class="hljs-tag">\<span class="hljs-name"> </span></span>z <span class="hljs-tag">\<span class="hljs-name">le</span></span> 0
+<span class="hljs-tag">\<span class="hljs-name">end</span><span class="hljs-string">{cases}</span></span> {<span class="hljs-comment">% endmath %}</span>
+</code></pre>
+<p><script type="math/tex; "> y = \begin{cases} 1 \quad \text{if} \ z > 0 \\ 0 \quad \text{if} \ z \le 0 \end{cases} </script></p>
 
                                 
                                 </section>
@@ -270,7 +291,7 @@ git push origin master
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"本サイト","level":"1.4","depth":1,"previous":{"title":"Heckit","level":"1.3","depth":1,"path":"heckit.md","ref":"heckit.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"site.md","mtime":"2020-12-15T12:07:04.517Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-18T12:59:26.961Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"本サイト","level":"1.4","depth":1,"previous":{"title":"Heckit","level":"1.3","depth":1,"path":"heckit.md","ref":"heckit.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mathjax"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"site.md","mtime":"2020-12-18T13:21:09.337Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-18T14:37:51.323Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
