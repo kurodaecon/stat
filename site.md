@@ -23,6 +23,7 @@
   * ChromeやFirefoxの拡張機能「Markdown Viewer」を利用してプレビュー
   * 数式を使う場合はVisual Studio Codeで「Markdown Preview Enhanced」を利用するほうが便利。ただし、(1) inlineのつもりの数式がdisplayed（別行立て）になってしまう、(2) KaTeXを利用しているため一部コマンドでparse errorが出る。
   * .md ファイルは（sjisではなく）UTF-8N (BOMなし) で保存
+  * 目次はVSCodeの「Markdown TOC」で生成。謎の「auto」が出現する場合は[【VSCode】Markdownで書いたブログに目次を付ける！（Markdown TOC）](https://dev.classmethod.jp/articles/vscode-markdown-toc-for-blog/)にあるとおり改行コードを変更。
 * build, commit, push
   * PowerShellに直接打ち込んで実行してもよいが、[「PowerShell のスクリプトファイルを作成してバッチ実行する方法
 」](https://www.projectgroup.info/tips/Windows/PowerShell_0001.html)のように .ps1 を実行するバッチファイルを作成すると便利
