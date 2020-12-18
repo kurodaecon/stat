@@ -4,6 +4,20 @@
 
 James J. Heckman, the Nobel laureate による2段階推定。通称Heckit（ヘキット）。
 
+### 目次
+
+- [Heckit](#heckit)
+        - [目次](#目次)
+    - [参考文献](#参考文献)
+    - [前提知識](#前提知識)
+        - [切断正規分布](#切断正規分布)
+        - [サンプルセレクションモデルの概要](#サンプルセレクションモデルの概要)
+        - [Tobitモデル [CT05, § 16.3]](#tobitモデル-ct05-§-163)
+    - [ようやく本題](#ようやく本題)
+    - [統計ソフトウェア](#統計ソフトウェア)
+        - [R](#r)
+        - [Stata](#stata)
+
 ## 参考文献
 
 * 山本勲『[実証分析のための計量経済学―正しい手法と結果の読み方](https://www.biz-book.jp/isbn/978-4-502-16811-6)』中央経済社、2015．
@@ -58,19 +72,21 @@ Heckitはサンプルセレクションモデルの一つとして説明され�
 
 被説明変数の値によってサンプリングされる場合、回帰モデル（などの統計モデル）のパラメータは一致推定量ではなくなる場合がある。このとき、一致推定するためには何らかの補正を与える必要が生じる。このようなサンプルは広く selected sample として定義されている。どのように select されるかはケースバイケースなので（例：self-selection）、それらに対応した数多くの selection model が存在する。
 
-* Tobit, Section 16.3 ... type 1 Tobit
-* Bivariate sample selection model, Section 16.5 ... type 2 Tobit
-* Roy model, Section 16.7 ... type 5 Tobit
+* Tobit [type 1 Tobit] ... Section 16.3
+* Bivariate sample selection model [type 2 Tobit] ... Section 16.5
+* Roy model [type 5 Tobit] ... Section 16.7
 
-### Tobitモデル [Cameron and Trivedi 2005, Section 16.3]
+### Tobitモデル [CT05, § 16.3]
 
 Tobitモデル (censored normal regression model) は、潜在変数 (latent variable) が0以下で censoring （打ち切り）されるケースの一つ。
 
-$$ y^{*} = \mathbf{x}' \beta + \epsilon, \quad \epsilon \sim N(0, \sigma^2), \quad y = \begin{cases} y^{*} \quad \text{if } y^{*} > 0 \\ . \text{ (missing)} \quad \text{if } y^{*} \le 0 \end{cases} $$
+$$ y^{*} = \mathbf{x}' \beta + \epsilon, \quad \epsilon \sim N(0, \sigma^2), \quad y =
+\begin{cases} y^{*} \quad \text{if } y^{*} > 0 \\
+. \text{ (missing)} \quad \text{if } y^{*} \le 0 \end{cases} $$
 
-しれっと $$ \epsilon \sim N $$ を仮定しているが、この仮定が満たされない場合は別の修正を考える必要がある。それはまた別の話（control function approach by Lee; Dahl）。
+ここでしれっと $$ \epsilon \sim N $$ を仮定しているが、これが満たされない場合に以下の議論を適用することは適当でない。それはまた別の話 (control function approach by Lung-Fei Lee; Gordon Dahl)。
 
-なお、打ち切り (censoring) と切断 (truncation) は異なる点に注意。切断された分はデータが観測されないが、打ち切りはデータが閾値に張り付く。
+なお、打ち切り (censoring) と切断 (truncation) は異なる点に注意。切断された分はデータが観測されないが、打ち切りはデータが閾値に張り付く (spike)。
 
 0より左側が切断され (left truncation at zero)、$$ y^{*} > 0 $$ の場合に $$y$$ が観測される場合を考える。
 
@@ -89,9 +105,9 @@ $$ E[\epsilon | \epsilon > - \mathbf{x}' \beta]
  = \sigma \lambda (\frac{\mathbf{x}' \beta}{\sigma})
 $$
 
-この $$ \lambda (z) = \frac{\phi(z)}{\Phi(z)} $$ は逆ミルズ比 (inverse Mills ratio) と呼ばれる。大元の提案者である [John Mills (Biometrika 1926)](https://doi.org/10.1093/biomet/18.3-4.395) はこの逆数である $$ \frac{1 - \Phi(z)}{\phi(z)} = \frac{\Phi(-z)}{\phi(z)} $$ を用いていたため、「逆」と付くとの由。この理由から、一部のテキストでは $$ \lambda^{*}(z) = \frac{\phi(z)}{\Phi(-z)} $$ を逆ミルズ比と呼ぶらしい。
+この $$ \lambda (z) = \frac{\phi(z)}{\Phi(z)} $$ は逆ミルズ比 (inverse Mills ratio) と呼ばれる。大元の提案者である [John Mills (Biometrika 1926)](https://doi.org/10.1093/biomet/18.3-4.395) はこの逆数である $$ \frac{1 - \Phi(z)}{\phi(z)} = \frac{\Phi(-z)}{\phi(z)} $$ を用いていたため、「逆」と付くとの由。この理由から、一部のテキストでは $$ \lambda^{*}(z) = \frac{\Phi(-z)}{\phi(z)} $$ を逆ミルズ比と呼ぶらしい。
 
-よって、$$ E[y | \mathbf{x}, y > 0] = \mathbf{x}' \beta + \sigma \phi(\frac{\mathbf{x}' \beta}{\sigma}) $$ が得られる。
+以上より $$ E[y | \mathbf{x}, y > 0] = \mathbf{x}' \beta + \sigma \phi(\frac{\mathbf{x}' \beta}{\sigma}) $$ が得られる。
 
 導出は追わないが、限界効果は以下のとおり。
 

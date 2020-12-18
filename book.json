@@ -1,4 +1,5 @@
 {
     "plugins":["mathjax"],
-    "language": "ja"
+    "language": "ja",
+    "markdown-toc.insertAnchor": true
 }
