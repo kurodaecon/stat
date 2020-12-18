@@ -13,10 +13,41 @@ James J. Heckman, the Nobel laureate による2段階推定。通称Heckit（ヘ
 * 北村行伸『[ミクロ計量経済学入門](https://www.nippyo.co.jp/shop/book/4146.html)』日本評論社、2009．
   * 第10章 トービット・モデルとヘックマンの2段階推定―労働供給問題 (cf. [PDF](http://www.ier.hit-u.ac.jp/~kitamura/lecture/Hit/08Statsys10.pdf))
 * Patrick Puhani, [The Heckman Correction for Sample Selection and Its Critique](https://doi.org/10.1111/1467-6419.00104), Journal of Economic Surveys, 14 (1), 53-68, 2000.
+* Jeffrey M. Wooldridge, [Econometric Analysis of Cross Section and Panel Data (Second Edition)](https://mitpress.mit.edu/books/econometric-analysis-cross-section-and-panel-data-second-edition), MIT Press, 2010.
+  * Ch. 19 Censored Data, Sample Selection, and Attrition
 * A. Colin Cameron and Pravin K. Trivedi, [Microeconometrics Methods and Applications](https://www.cambridge.org/core/books/microeconometrics/982158DE989697607C858068ED05C7B1), Cambridge University Press, 2005.
   * Section 16.5.4. Heckman Two-Step Estimator
 
-## 概要
+## 前提知識
+
+### 切断正規分布
+
+標準正規分布の密度関数 $$\phi(z) = \frac{1}{\sqrt{2\pi}} \exp(-\frac{z^2}{2})$$ について、$$z \ge c$$ の場合を考える（すなわち、$$c$$ 未満の $$z$$ では $$\phi(z)=0$$ となる）。
+
+このような確率分布（「切断正規分布」）の密度関数を考える。$$ \int_{c}^{\infty} \phi(z) dz = \Phi(\infty) - \Phi(c) = 1 - \Phi(c) < 1 $$ なので、切断正規分布の密度関数を積分して $$1$$ になるためには $$1 - \Phi(c)$$ の分だけ膨らませる必要がある（定義上、密度関数を定義域で積分すると $$1$$ にならなければならない）。すなわち、切断（標準）正規分布の密度関数は $$ \frac{\phi(z)}{1 - \Phi(c)} $$ となる。
+
+$$ E[z | z > c]
+ = \int_{c}^{\infty} z \frac{\Phi(z)}{1 - \Phi(c)} dz
+ = \int_{c}^{\infty} z \frac{1}{1 - \Phi(c)} \frac{1}{\sqrt{2\pi}} \exp(-\frac{z^2}{2}) dz $$
+
+ここで、$$ \frac{d}{dz} \exp(- \frac{z^2}{2}) = - z \exp(- \frac{z^2}{2}) $$ より、
+
+$$ \int_{c}^{\infty} z \exp(-\frac{z^2}{2}) dz
+ = [- \exp(-\frac{z^2}{2})]_{c}^{\infty}
+ = 0 + \exp(- \frac{c^2}{2}) $$ が得られる。
+
+よって、期待値は以下となる。
+
+$$ E[z | z > c]
+ = \frac{1}{1 - \Phi(c)} \frac{1}{\sqrt{2\pi}} \int_{c}^{\infty} z \exp(-\frac{z^2}{2}) dz
+ = \frac{1}{1 - \Phi(c)} \frac{1}{\sqrt{2\pi}} \exp(- \frac{c^2}{2})
+ = \frac{\phi(c)}{1 - \Phi(c)} $$
+
+### サンプルセレクションモデル
+
+Heckitはサンプルセレクションモデルの一つとして説明されることが多い。以下、Cameron and Trivedi (2005, §16.5) に沿ってサンプルセレクションモデルの概要を示す。
+
+## 本題の「Heckit」
 
 ある条件を満たす場合しかデータが観測されない場合がある。
 
