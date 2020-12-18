@@ -22,34 +22,62 @@ James J. Heckman, the Nobel laureate による2段階推定。通称Heckit（ヘ
 
 ### 切断正規分布
 
-標準正規分布の密度関数 $$\phi(z) = \frac{1}{\sqrt{2\pi}} \exp(-\frac{z^2}{2})$$ について、$$z \ge c$$ の場合を考える（すなわち、$$c$$ 未満の $$z$$ では $$\phi(z)=0$$ となる）。
+標準正規分布の密度関数 $$\phi(z) = \frac{1}{\sqrt{2\pi}} \exp(-\frac{z^2}{2})$$ について、$$z \ge c$$ の場合（「切断正規分布」）を考える（すなわち、$$c$$ 未満の $$z$$ では $$\phi(z)=0$$ となる）。
 
-このような確率分布（「切断正規分布」）の密度関数を考える。$$ \int_{c}^{\infty} \phi(z) dz = \Phi(\infty) - \Phi(c) = 1 - \Phi(c) < 1 $$ なので、切断正規分布の密度関数を積分して $$1$$ になるためには $$1 - \Phi(c)$$ の分だけ膨らませる必要がある（定義上、密度関数を定義域で積分すると $$1$$ にならなければならない）。すなわち、切断（標準）正規分布の密度関数は $$ \frac{\phi(z)}{1 - \Phi(c)} $$ となる。
+$$ \int_{c}^{\infty} \phi(z) dz = \Phi(\infty) - \Phi(c) = 1 - \Phi(c) < 1 $$ となる。定義上、密度関数を定義域で積分すると1にならなければならないので、密度関数を $$1 - \Phi(c)$$ の分だけ膨らませて $$ \frac{\phi(z)}{1 - \Phi(c)} $$ となる。
+
+期待値を考える。
 
 $$ E[z | z > c]
- = \int_{c}^{\infty} z \frac{\Phi(z)}{1 - \Phi(c)} dz
+ = \int_{c}^{\infty} z \frac{\phi(z)}{1 - \Phi(c)} dz
  = \int_{c}^{\infty} z \frac{1}{1 - \Phi(c)} \frac{1}{\sqrt{2\pi}} \exp(-\frac{z^2}{2}) dz $$
 
-ここで、$$ \frac{d}{dz} \exp(- \frac{z^2}{2}) = - z \exp(- \frac{z^2}{2}) $$ より、
+ここで $$ \frac{d}{dz} \exp(- \frac{z^2}{2}) = - z \exp(- \frac{z^2}{2}) $$ より、
 
 $$ \int_{c}^{\infty} z \exp(-\frac{z^2}{2}) dz
  = [- \exp(-\frac{z^2}{2})]_{c}^{\infty}
- = 0 + \exp(- \frac{c^2}{2}) $$ が得られる。
+ = 0 + \exp(- \frac{c^2}{2}) $$
 
-よって、期待値は以下となる。
+となるので、以下が得られる。
 
 $$ E[z | z > c]
  = \frac{1}{1 - \Phi(c)} \frac{1}{\sqrt{2\pi}} \int_{c}^{\infty} z \exp(-\frac{z^2}{2}) dz
  = \frac{1}{1 - \Phi(c)} \frac{1}{\sqrt{2\pi}} \exp(- \frac{c^2}{2})
  = \frac{\phi(c)}{1 - \Phi(c)} $$
 
-### サンプルセレクションモデル
+$$ E[z | z > -c]
+ = \frac{\phi(-c)}{1 - \Phi(-c)}
+ = \frac{\phi(c)}{1 - (1 - \Phi(c))}
+ = \frac{\phi(c)}{\Phi(c)} $$
 
-Heckitはサンプルセレクションモデルの一つとして説明されることが多い。以下、Cameron and Trivedi (2005, §16.5) に沿ってサンプルセレクションモデルの概要を示す。
+### サンプルセレクションモデルの概要
 
-## 本題の「Heckit」
+Heckitはサンプルセレクションモデルの一つとして説明されることが多い。以下、Cameron and Trivedi (2005, Ch. 16) に沿ってサンプルセレクションモデルの概要を示す。
 
-ある条件を満たす場合しかデータが観測されない場合がある。
+※和文かつ必要最小限の説明がなされているという条件の下では、末石（2015）が分かりやすそう。
+
+被説明変数の値によってサンプリングされる場合、回帰モデル（などの統計モデル）のパラメータは一致推定量ではなくなる場合がある。このとき、一致推定するためには何らかの補正を与える必要が生じる。このようなサンプルは広く selected sample として定義されている。どのように select されるかはケースバイケースなので（例：self-selection）、それらに対応した数多くの selection model が存在する。
+
+* Tobit, Section 16.3 ... type 1 Tobit
+* Bivariate sample selection model, Section 16.5 ... type 2 Tobit
+* Roy model, Section 16.7 ... type 5 Tobit
+
+### Tobitモデル [Cameron and Trivedi 2005, Section 16.3]
+
+Tobitモデル、もしくは、censored normal regression model は、潜在変数 latent variable が0未満で censoring （打ち切り）されるケースの一つ。
+
+$$ y^{*} = \mathbf{x}' \beta + \epsilon, \quad \epsilon \sim N(0, \sigma^2), \quad y = \begin{cases} y^{*} \quad \text{if } y^{*} > 0 \\ . \text{ (missing)} \quad \text{if } y^{*} \le 0 \end{cases} $$
+
+0より左側が切断され (left truncation at zero)、$$ y^{*} > 0 $$ の場合に $$y$$ が観測される場合を考える。
+
+$$ \begin{align} E[y]
+ & = E[y^{*} | y^{*} > 0]
+ = E[\mathbf{x}' \beta + \epsilon | \mathbf{x}' \beta + \epsilon > 0] \\
+ & = E[\mathbf{x}' \beta | \mathbf{x}' \beta + \epsilon > 0] + E[\epsilon | \mathbf{x}' \beta + \epsilon > 0]
+ = \mathbf{x}' \beta + E[\epsilon | \epsilon > - \mathbf{x}' \beta]
+ \end{align} $$
+
+## ようやく本題
 
 たとえば、賃金関数の推定を考える。就労していない人の賃金は観測されない。もし、「就労しているかどうか」が完全にランダムに（外生的に）決定されるのであれば、観測されるデータ（就労している人の分）だけを使って賃金関数を推計することで何ら問題はない。
 
