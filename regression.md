@@ -1,6 +1,6 @@
 # 線形回帰モデル
 
-$$ f(x) = \int dx $$ ← ここに数式のようなものが表示されていない場合は、お手数ですがこのページを再読み込み（F5）してください。数式の表示エラーが生じています。
+「$$ f(x) = \int dx $$」 ← ここに数式のようなものが表示されていない場合は、お手数ですがこのページを再読み込み（F5）してください。数式の表示エラーが生じています（困）。
 
 ## 参考文献
 
@@ -63,7 +63,7 @@ $$ \mathbf{y} = \mathbf{x}_1 \beta_1 + \cdots + \mathbf{x}_K \beta_K + \boldsymb
 * $$ I $$ or $$ E $$：単位行列 ... $$ AI = IA = A $$
 * $$ A^{-1} $$：逆行列 ... $$ A^{-1} A = A A^{-1} = I $$
 
-### 線形回帰モデルの仮定 [Greene, pp. 17ff, p. 55]
+### 線形回帰モデルの仮定 [Greene, pp. 17ff, 55]
 
 * A1. 線形性：$$ \mathbf{y} = \mathbf{X} \boldsymbol{\beta} + \boldsymbol{\epsilon} $$
 * A2. フルランク：$$ E[\mathbf{xx}'] = \mathbf{Q} $$ （$$ K \times K $$ の行列）がフルランク、すなわち $$ \text{rank}(\mathbf{Q}) = K $$
@@ -113,7 +113,7 @@ $$ \mathbf{y} = \mathbf{x}_1 \beta_1 + \cdots + \mathbf{x}_K \beta_K + \boldsymb
 lm0 <- lm(formula = Fertility ~ Agriculture + Examination +
   Education + Catholic + Infant.Mortality, data = swiss)
 summary(lm0)
-car::linearHypothesis(lm0, c("Agriculture = 0", "Examination = 0"))
+car::linearHypothesis(lm0, c("Agriculture = 0", "Examination = 0"))  # joint test
 ```
 
 ### Stata

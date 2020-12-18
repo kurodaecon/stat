@@ -1,6 +1,6 @@
 # Heckit
 
-$$ f(x) = \int dx $$ ← ここに数式のようなものが表示されていない場合は、お手数ですがこのページを再読み込み（F5）してください。数式の表示エラーが生じています。
+「$$ f(x) = \int dx $$」 ← ここに数式のようなものが表示されていない場合は、お手数ですがこのページを再読み込み（F5）してください。数式の表示エラーが生じています（困）。
 
 James J. Heckman, the Nobel laureate による2段階推定。通称Heckit（ヘキット）。
 
@@ -30,8 +30,10 @@ $$ M_i = \begin{cases} 1 \quad \text{if} \quad M_i^{*} > m \\ 0 \quad \text{if} 
 
 * $$ Y $$: 観測される賃金
 * $$ x $$: 個人属性（教育年数など）
-* $$ M $$ if in labor force (= 1) or not (= 0) （就労しているかどうか）
+* $$ M $$: 就労しているかどうか (in labor force --> 1, or not --> 0)
 * $$ z $$: IV
+
+cf. [Tobitと線形モデルを比較した分かりやすい図](https://www.researchgate.net/figure/Tobit-model-vs-OLS-Consistent-estimates-of-the-parameters-of-the-Tobit-model-may-be_fig2_255606959)
 
 ## 統計ソフトウェア
 
