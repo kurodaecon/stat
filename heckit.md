@@ -210,6 +210,20 @@ $$ y_{2i} = \mathbf{x}_{2i}' \beta_2 + \sigma_{12} \lambda(\mathbf{x}_{1i}' \hat
 * $$ \lambda(\mathbf{x}_{1}' \hat{\beta}_1) = \phi/\Phi $$: 推定された逆ミルズ比
 * $$ H_0: \sigma_{12} = 0 $$ はWald検定などによって検定することができる
 
+ただし、通常の標準誤差も heteroskedasticity-robust 標準誤差も正確ではない点に注意する必要がある。正確な標準誤差を導出するためには、(1) 誤差項 $$v$$ が不均一分散を持つこと、および、(2) $$ \beta_1 $$ は推定値で置き換えられること、の2点を考慮する必要がある。計算は複雑なので、統計パッケージに計算させるか、あるいはブートストラップ法で計算するのがベター。
+
+最尤推定する場合と比べて efficiency loss があるものの、(1) 実装が容易であること、(2) 他のセレクションモデルにも応用可能であること、(3) $$ \epsilon_1, \epsilon_2 $$ の同時正規分布の仮定と比べて弱い仮定でよいこと、(4) これらの分布に関する仮定はセミパラ推定のためにさらに弱めることが可能であること、といった利点があり、人気。
+
+おさらいだが、要求される key assumption のエッセンスは以下。
+
+$$ \epsilon_2 = \delta \epsilon_1 + \xi, \quad \xi \perp \!\!\! \perp \epsilon_1 $$
+
+耐久財の消費を考えた場合、「消費方程式の誤差」は「購入意思決定方程式の誤差の倍数」＋「購入意思決定とは独立のノイズ」に等しいことを表す。CT05では "seems to be a quite sensible model" と扱われている。
+
+より一般化すると、Heckman's two-step method は $$ \epsilon_1 $$ が正規分布以外の分布に従う場合も適用可能。
+
+### 例：賃金関数
+
 たとえば、賃金関数の推定を考える。就労していない人の賃金は観測されない。もし、「就労しているかどうか」が完全にランダムに（外生的に）決定されるのであれば、観測されるデータ（就労している人の分）だけを使って賃金関数を推計することで何ら問題はない。
 
 しかし、現実にはランダムではない。このような場合、サンプルセレクション sample selection の問題が生じる。
@@ -224,6 +238,14 @@ $$ M_i = \begin{cases} 1 \quad \text{if} \quad M_i^{*} > m \\ 0 \quad \text{if} 
 * $$ z $$: IV
 
 cf. [Tobitと線形モデルを比較した分かりやすい図](https://www.researchgate.net/figure/Tobit-model-vs-OLS-Consistent-estimates-of-the-parameters-of-the-Tobit-model-may-be_fig2_255606959)
+
+## 発展 [CT05, Section 16.9]
+
+Tobit model $$ y_i^{*} = \mathbf{x}_i' \beta + \epsilon_i $$ の仮定 $$ \epsilon_i \sim N[0, \sigma_i^2] $$ は緩和可能：
+(1) 不均一性を明示的にモデル化する：$$ \sigma_i^2 = \exp(\mathbf{z}_i' \gamma) $$
+(2) 正規分布よりも柔軟な分布 (squared polynomial expansion of the normal, etc.) を用いる
+
+Bivariate sample selection model に対しても同様で、たとえば Lee (ECTA 1983) は $$ (\epsilon_1, \epsilon_2) $$ を2変量正規分布の仮定がより妥当となるような変換を提案した。
 
 ## 統計ソフトウェア
 
