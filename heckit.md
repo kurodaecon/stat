@@ -176,13 +176,13 @@ $$ \epsilon_2 = \sigma_{12} \epsilon_1 + \xi, \quad \epsilon_1 \perp \!\!\! \per
 
 これは、同時正規分布を仮定した場合の条件付平均から導かれる。
 
-| $$ \begin{bmatrix} \mathbf{z}_1 \\ \mathbf{z}_2 \end{bmatrix} \sim N \left[
+> $$ \begin{bmatrix} \mathbf{z}_1 \\ \mathbf{z}_2 \end{bmatrix} \sim N \left[
   \begin{bmatrix} \boldsymbol{\mu}_1 \\ \boldsymbol{\mu}_2 \end{bmatrix},
   \begin{bmatrix} \Sigma_{11} & \Sigma_{12} \\ \Sigma_{21} & \Sigma_{22} \end{bmatrix} \right] $$
-| 
-| $$ \mathbf{z}_2 | \mathbf{z}_1 \sim N [\boldsymbol{\mu}_2 + \Sigma_{21} \Sigma_{11}^{-1} (\mathbf{z}_1 - \boldsymbol{\mu}_1), \Sigma_{22} - \Sigma_{21} \Sigma_{11}^{-1} \Sigma_{12}] $$
-| 
-| $$ \mathbf{z}_2 = \boldsymbol{\mu}_2 + \Sigma_{21} \Sigma_{11}^{-1} (\mathbf{z}_1 - \boldsymbol{\mu}_1) + \boldsymbol{\xi}, \quad
+>
+> $$ \mathbf{z}_2 | \mathbf{z}_1 \sim N [\boldsymbol{\mu}_2 + \Sigma_{21} \Sigma_{11}^{-1} (\mathbf{z}_1 - \boldsymbol{\mu}_1), \Sigma_{22} - \Sigma_{21} \Sigma_{11}^{-1} \Sigma_{12}] $$
+>
+> $$ \mathbf{z}_2 = \boldsymbol{\mu}_2 + \Sigma_{21} \Sigma_{11}^{-1} (\mathbf{z}_1 - \boldsymbol{\mu}_1) + \boldsymbol{\xi}, \quad
  \boldsymbol{\xi} \sim N [\mathbf{0}, \Sigma_{22} - \Sigma_{21} \Sigma_{11}^{-1} \Sigma_{12}], \quad
  \boldsymbol{\xi} \perp \!\!\! \perp \mathbf{z}_1 $$
 
