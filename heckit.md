@@ -106,7 +106,7 @@ $$ E[\epsilon | \epsilon > - \mathbf{x}' \beta]
  = \sigma \lambda (\frac{\mathbf{x}' \beta}{\sigma})
 $$
 
-この $$ \lambda (z) = \frac{\phi(z)}{\Phi(z)} $$ は逆ミルズ比 (inverse Mills ratio) と呼ばれる。大元の提案者である [John Mills (Biometrika 1926)](https://doi.org/10.1093/biomet/18.3-4.395) はこの逆数である $$ \frac{1 - \Phi(z)}{\phi(z)} = \frac{\Phi(-z)}{\phi(z)} $$ を用いていたため、「逆」と付くとの由。この理由から、一部のテキストでは $$ \lambda^{*}(z) = \frac{\Phi(-z)}{\phi(z)} $$ を逆ミルズ比と呼ぶらしい。
+この $$ \lambda (z) = \frac{\phi(z)}{\Phi(z)} $$ は逆ミルズ比 (inverse Mills ratio) と呼ばれる。大元の提案者である [John Mills (Biometrika 1926)](https://doi.org/10.1093/biomet/18.3-4.395) はこの逆数である $$ \frac{1 - \Phi(z)}{\phi(z)} = \frac{\Phi(-z)}{\phi(z)} $$ を用いていたため、「逆」ミルズ比。この理由から、一部のテキストでは $$ \lambda^{*}(z) = \frac{\Phi(-z)}{\phi(z)} $$ を逆ミルズ比と呼ぶらしい。
 
 以上より $$ E[y | \mathbf{x}, y > 0] = \mathbf{x}' \beta + \sigma \phi(\frac{\mathbf{x}' \beta}{\sigma}) $$ が得られる。
 
@@ -145,14 +145,14 @@ $$ \epsilon_1, \epsilon_2 $$ が相関している場合に $$ \beta_2 $$ を一
 
 このモデルに決まった呼び方はないが、Tobit model with stochastic threshold, type 2 Tobit model, probit selection equation, generalized Tobit model, sample selection model などと呼ばれている。
 
-最尤推定のためには、誤差項が（不均一分散の）同時正規分布に従うと仮定する（$$ \sigma_{1}^{2} = 1 $$ にnormalization）。
+最尤推定のためには、誤差項が（不均一分散の）同時正規分布に従うと仮定する（$$ \sigma_{1}^{2} = 1 $$ にnormalize）。
 
 $$ \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \end{bmatrix} = N \left[
  \begin{bmatrix} 0 \\ 0 \end{bmatrix},
  \begin{bmatrix} 1 & \sigma_{12} \\ \sigma_{12} & \sigma_{2}^{2} \end{bmatrix}
 \right] $$
 
-尤度関数は次の通り。同時正規誤差を持つ線形モデルに限らず、より一般化された尤度関数になっている。
+尤度関数は次の通り。これは同時正規誤差を持つ線形モデルに限定されない、より一般化された尤度関数になっている。
 
 $$ L = \prod_{i = 1}^{n} \{ \text{Pr}[y_{1i}^{*} \le 0]^{1 - y_{1i}} \} \{ f(y_{2i} | y_{1i}^{*} > 0) \times \text{Pr}[y_{1i}^{*} > 0] \}^{y_{1i}} $$
 
@@ -176,13 +176,13 @@ $$ \epsilon_2 = \sigma_{12} \epsilon_1 + \xi, \quad \epsilon_1 \perp \!\!\! \per
 
 これは、同時正規分布を仮定した場合の条件付平均から導かれる。
 
-$$ \begin{bmatrix} \mathbf{z}_1 \\ \mathbf{z}_2 \end{bmatrix} \sim N \left[
+| $$ \begin{bmatrix} \mathbf{z}_1 \\ \mathbf{z}_2 \end{bmatrix} \sim N \left[
   \begin{bmatrix} \boldsymbol{\mu}_1 \\ \boldsymbol{\mu}_2 \end{bmatrix},
   \begin{bmatrix} \Sigma_{11} & \Sigma_{12} \\ \Sigma_{21} & \Sigma_{22} \end{bmatrix} \right] $$
-
-$$ \mathbf{z}_2 | \mathbf{z}_1 \sim N [\boldsymbol{\mu}_2 + \Sigma_{21} \Sigma_{11}^{-1} (\mathbf{z}_1 - \boldsymbol{\mu}_1), \Sigma_{22} - \Sigma_{21} \Sigma_{11}^{-1} \Sigma_{12}] $$
-
-$$ \mathbf{z}_2 = \boldsymbol{\mu}_2 + \Sigma_{21} \Sigma_{11}^{-1} (\mathbf{z}_1 - \boldsymbol{\mu}_1) + \boldsymbol{\xi}, \quad
+| 
+| $$ \mathbf{z}_2 | \mathbf{z}_1 \sim N [\boldsymbol{\mu}_2 + \Sigma_{21} \Sigma_{11}^{-1} (\mathbf{z}_1 - \boldsymbol{\mu}_1), \Sigma_{22} - \Sigma_{21} \Sigma_{11}^{-1} \Sigma_{12}] $$
+| 
+| $$ \mathbf{z}_2 = \boldsymbol{\mu}_2 + \Sigma_{21} \Sigma_{11}^{-1} (\mathbf{z}_1 - \boldsymbol{\mu}_1) + \boldsymbol{\xi}, \quad
  \boldsymbol{\xi} \sim N [\mathbf{0}, \Sigma_{22} - \Sigma_{21} \Sigma_{11}^{-1} \Sigma_{12}], \quad
  \boldsymbol{\xi} \perp \!\!\! \perp \mathbf{z}_1 $$
 
@@ -190,14 +190,25 @@ $$ \mathbf{z}_2 = \boldsymbol{\mu}_2 + \Sigma_{21} \Sigma_{11}^{-1} (\mathbf{z}_
 
 $$ \begin{align} E[y_2 | \mathbf{x}, y_1^{*} > 0]
  & = \mathbf{x}_2' \beta_2 + E[\epsilon_2 | \epsilon_1 > - \mathbf{x}_1' \beta_1]
- = \mathbf{x}_2' \beta_2 + E[\sigma_{12} \epsilon_1 + \xi | \epsilon_1 > - \mathbf{x}_1' \beta_1]
+ = \mathbf{x}_2' \beta_2 + E[\sigma_{12} \epsilon_1 + \xi | \epsilon_1 > - \mathbf{x}_1' \beta_1] \\
  & = \mathbf{x}_2' \beta_2 + \sigma_{12} E[\epsilon_1 | \epsilon_1 > - \mathbf{x}_1' \beta_1] \end{align} $$
 
-逆ミルズ比は $$ E[z | z > -c] = \lambda(c) = \phi(z)/\Phi(z) $$ なので、以下となる。
+逆ミルズ比は $$ E[z | z > -c] = \lambda(c) = \frac{\phi(z)}{\Phi(z)} $$ なので、以下となる。
 
 $$ E[y_2 | \mathbf{x}, y_1^{*} > 0] = \mathbf{x}_2' \beta_2 + \sigma_{12} \lambda(\mathbf{x}_1' \beta_1) $$
 
 ## ようやく本題、Heckman Two-Step Estimator [CT05, § 16.5.4]
+
+$$ y_2 $$ が正の値をとるサンプルのみで $$ y_2 $$ を $$ \mathbf{x}_2 $$ に回帰すると（OLS推定）、$$ \sigma_{12} = 0 $$ でない限りは $$ \beta $$ の一致推定ができない。
+
+Heckman's two-step procedure または Heckit estimator では、除外変数 $$ \lambda (\mathbf{x}_1' \beta_1) $$ を追加して回帰を行う（OLS推定）。すなわち、$$ y_2 $$ が正の値を持つサンプルに大して、次のモデルをOLS推定する。
+
+$$ y_{2i} = \mathbf{x}_{2i}' \beta_2 + \sigma_{12} \lambda(\mathbf{x}_{1i}' \hat{\beta}_1) + v_i $$
+
+* $$ v $$: 誤差項
+* $$ \hat{\beta}_1 $$: 第1段階のプロビット回帰（$$ y_1 $$ を $$ \mathbf{x}_1 $$ に回帰, $$ \text{Pr}[y_1^{*} > 0] = \Phi(\mathbf{x}_1' \beta_1) $$）によって得られたパラメータの推定量
+* $$ \lambda(\mathbf{x}_{1}' \hat{\beta}_1) = \phi/\Phi $$: 推定された逆ミルズ比
+* $$ H_0: \sigma_{12} = 0 $$ はWald検定などによって検定することができる
 
 たとえば、賃金関数の推定を考える。就労していない人の賃金は観測されない。もし、「就労しているかどうか」が完全にランダムに（外生的に）決定されるのであれば、観測されるデータ（就労している人の分）だけを使って賃金関数を推計することで何ら問題はない。
 
