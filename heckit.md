@@ -4,6 +4,7 @@
 
 James J. Heckman, the Nobel laureate による2段階推定。通称Heckit（ヘキット）。
 
+<!--
 __目次__
 
 - [参考文献](#参考文献)
@@ -15,6 +16,8 @@ __目次__
 - [統計ソフトウェア](#統計ソフトウェア)
     - [R](#r)
     - [Stata](#stata)
+-->
+<!-- TOC -->
 
 ## 参考文献
 
@@ -99,7 +102,7 @@ $$ \begin{align} E[y]
 
 $$ E[\epsilon | \epsilon > - \mathbf{x}' \beta]
  = \sigma E[\frac{\epsilon}{\sigma} | \frac{\epsilon}{\sigma} > - \frac{\mathbf{x}' \beta}{\sigma}]
- = \sigma \frac{\phi(\frac{\mathbf{x}' \beta}{\sigma})}{\Phi(\frac{\mathbf{x}' \beta}{\sigma})}
+ = \sigma \frac{\phi(\mathbf{x}' \beta / \sigma)}{\Phi(\mathbf{x}' \beta / \sigma)}
  = \sigma \lambda (\frac{\mathbf{x}' \beta}{\sigma})
 $$
 
@@ -113,10 +116,88 @@ $$ \frac{\partial}{\partial \mathbf{x}} E[y | \mathbf{x}, y > 0 ] = [1 - \frac{\
 
 推定方法には、最尤法、非線形最小二乗法、Heckmanの2段階推定、などがある。Heckmanの2段階推定について、詳細は後述するが、概要は次の通り。
 
-* 第1段階：Full sample で $$d (=1 \ \text{if} \ y>0)$$ を $$ \mathbf{x} $$ に回帰し、$$ \alpha = \beta/\sigma $$ の一致推定量 $$ \hat{\alpha} $$ を得る
+* 第1段階：Full sample で $$d (\equiv 1(y>0))$$ を $$ \mathbf{x} $$ に回帰するプロビットモデルを推計し、$$ \alpha = \beta/\sigma $$ の一致推定量 $$ \hat{\alpha} $$ を得る
 * 第2段階：Truncated sample で $$y$$ を $$ \mathbf{x}, \lambda(\mathbf{x}' \hat{\alpha}) $$ に回帰し、$$ \beta, \sigma $$ の一致推定量を得る
 
-## ようやく本題
+### A Bivariate Sample Selection Model (Type 2 Tobit) [CT05, § 16.5.2]
+
+2変量サンプルセレクションモデルを考える。
+
+アウトカムを $$ y^{*}_{2} $$ と記す。標準的な切断Tobitモデルでは、このアウトカムは $$ y^{*}_{2} > 0 $$ の場合に観測される。より一般化して、これとは別の潜在変数 $$ y^{*}_{1} $$ を導入して、$$ y^{*}_{1} > 0 $$ の場合にアウトカム $$ y^{*}_{2} $$ が観測されるものとしよう。
+
+例：
+
+* $$ y^{*}_{1} $$: 就労しているかどうかを決定する潜在変数
+* $$ y^{*}_{2} $$: どれだけ労働しているか（労働時間）を決定する潜在変数
+* 就労には通勤コストなどの固定コスト（どれだけの時間働くかよりも、就労するかどうかを決定するのにより重要と思われる。）がかかるため、$$ y^{*}_{1} \ne y^{*}_{2} $$ である。
+
+モデルは以下の2つの式からなる。
+
+* participation equation: $$ y_1 = \begin{cases} 1 \quad \text{if} \ y_{1}^{*} > 0 \\ 0 \quad \text{if} \ y_{1}^{*} \le 0 \end{cases} $$
+* outcome equation: $$ y_2 = \begin{cases} y_{2}^{*} \quad \text{if} \ y_{1}^{*} > 0 \\ . \ \text{(missing)} \quad \text{if} \ y_{1}^{*} \le 0 \end{cases} $$
+
+標準的な特定化は、潜在変数の項に誤差項を足すもの。なお、Tobitは $$ y_{1}^{*} = y_{2}^{*} $$ の特殊ケースに相当する。
+
+* $$ y_{1}^{*} = \mathbf{x}'_1 \beta_1 + \epsilon_1 $$
+* $$ y_{2}^{*} = \mathbf{x}'_2 \beta_2 + \epsilon_2 $$
+
+$$ \epsilon_1, \epsilon_2 $$ が相関している場合に $$ \beta_2 $$ を一致推定できなくなることが問題。
+
+このモデルに決まった呼び方はないが、Tobit model with stochastic threshold, type 2 Tobit model, probit selection equation, generalized Tobit model, sample selection model などと呼ばれている。
+
+最尤推定のためには、誤差項が（不均一分散の）同時正規分布に従うと仮定する（$$ \sigma_{1}^{2} = 1 $$ にnormalization）。
+
+$$ \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \end{bmatrix} = N \left[
+ \begin{bmatrix} 0 \\ 0 \end{bmatrix},
+ \begin{bmatrix} 1 & \sigma_{12} \\ \sigma_{12} & \sigma_{2}^{2} \end{bmatrix}
+\right] $$
+
+尤度関数は次の通り。同時正規誤差を持つ線形モデルに限らず、より一般化された尤度関数になっている。
+
+$$ L = \prod_{i = 1}^{n} \{ \text{Pr}[y_{1i}^{*} \le 0]^{1 - y_{1i}} \} \{ f(y_{2i} | y_{1i}^{*} > 0) \times \text{Pr}[y_{1i}^{*} > 0] \}^{y_{1i}} $$
+
+最初の項は $$ y_{1i}^{*} \le 0 $$ の場合の離散部分に対応し、2つ目の項は $$ y_{1i}^{*} > 0 $$ の場合の連続部分に対応する。
+
+### Conditional Means in the Bivariate Sample Selection Model [CT05, § 16.5.3]
+
+$$ y_2 $$ を $$ \mathbf{x}_2 $$ に回帰した場合（OLS推定）、パラメータの一致推定量は得られない。一方で前述の尤度関数を用いた最尤推定は制約が強いため、別の推定方法を利用したい。そのために、まずは conditional mean を考える。
+
+切断されたサンプルの平均を考える（$$ \mathbf{x} \text{: union of } \mathbf{x}_1, \mathbf{x}_2 $$）。
+
+$$ E[y_2 | \mathbf{x}, y_1^{*} > 0]
+ = E[\mathbf{x}_2' \beta_2 + \epsilon_2 | \mathbf{x}_1' \beta_1 + \epsilon_1 > 0]
+ = \mathbf{x}_2' \beta_2 + E[\epsilon_2 | \epsilon_1 > - \mathbf{x}_1' \beta_1] $$
+
+ 誤差項 $$ \epsilon_1, \epsilon_2 $$ が独立であれば $$ E[\epsilon_2 | \epsilon_1 > - \mathbf{x}_1' \beta_1] = E[\epsilon_2] = 0 $$ なので、$$ y_2 $$ を $$ \mathbf{x}_2 $$ に回帰すれば（OLS推定）、$$ \beta_2 $$ を一致推定できる。以下、独立でない場合を考える。
+
+[Heckman (ECTA 1979)](https://www.jstor.org/stable/1912352) は、誤差項 $$ \epsilon_1, \epsilon_2 $$ が同時正規分布に従う場合に以下が得られることを示した。
+
+$$ \epsilon_2 = \sigma_{12} \epsilon_1 + \xi, \quad \epsilon_1 \perp \!\!\! \perp \xi $$
+
+これは、同時正規分布を仮定した場合の条件付平均から導かれる。
+
+$$ \begin{bmatrix} \mathbf{z}_1 \\ \mathbf{z}_2 \end{bmatrix} \sim N \left[
+  \begin{bmatrix} \boldsymbol{\mu}_1 \\ \boldsymbol{\mu}_2 \end{bmatrix},
+  \begin{bmatrix} \Sigma_{11} & \Sigma_{12} \\ \Sigma_{21} & \Sigma_{22} \end{bmatrix} \right] $$
+
+$$ \mathbf{z}_2 | \mathbf{z}_1 \sim N [\boldsymbol{\mu}_2 + \Sigma_{21} \Sigma_{11}^{-1} (\mathbf{z}_1 - \boldsymbol{\mu}_1), \Sigma_{22} - \Sigma_{21} \Sigma_{11}^{-1} \Sigma_{12}] $$
+
+$$ \mathbf{z}_2 = \boldsymbol{\mu}_2 + \Sigma_{21} \Sigma_{11}^{-1} (\mathbf{z}_1 - \boldsymbol{\mu}_1) + \boldsymbol{\xi}, \quad
+ \boldsymbol{\xi} \sim N [\mathbf{0}, \Sigma_{22} - \Sigma_{21} \Sigma_{11}^{-1} \Sigma_{12}], \quad
+ \boldsymbol{\xi} \perp \!\!\! \perp \mathbf{z}_1 $$
+
+これ（$$ \epsilon_2 = \sigma_{12} \epsilon_1 + \xi $$）を適用すると、以下が得られる。最後の等式は $$ \xi \perp \!\!\! \perp \epsilon_1 $$ より。
+
+$$ \begin{align} E[y_2 | \mathbf{x}, y_1^{*} > 0]
+ & = \mathbf{x}_2' \beta_2 + E[\epsilon_2 | \epsilon_1 > - \mathbf{x}_1' \beta_1]
+ = \mathbf{x}_2' \beta_2 + E[\sigma_{12} \epsilon_1 + \xi | \epsilon_1 > - \mathbf{x}_1' \beta_1]
+ & = \mathbf{x}_2' \beta_2 + \sigma_{12} E[\epsilon_1 | \epsilon_1 > - \mathbf{x}_1' \beta_1] \end{align} $$
+
+逆ミルズ比は $$ E[z | z > -c] = \lambda(c) = \phi(z)/\Phi(z) $$ なので、以下となる。
+
+$$ E[y_2 | \mathbf{x}, y_1^{*} > 0] = \mathbf{x}_2' \beta_2 + \sigma_{12} \lambda(\mathbf{x}_1' \beta_1) $$
+
+## ようやく本題、Heckman Two-Step Estimator [CT05, § 16.5.4]
 
 たとえば、賃金関数の推定を考える。就労していない人の賃金は観測されない。もし、「就労しているかどうか」が完全にランダムに（外生的に）決定されるのであれば、観測されるデータ（就労している人の分）だけを使って賃金関数を推計することで何ら問題はない。
 
