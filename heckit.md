@@ -76,6 +76,9 @@ Heckitはサンプルセレクションモデルの一つとして説明され�
 * Tobit [type 1 Tobit] ... Section 16.3
 * Bivariate sample selection model [type 2 Tobit] ... Section 16.5
 * Roy model [type 5 Tobit] ... Section 16.7
+  * $$ y_1 = \begin{cases} 1 \quad \text{if } y_1^{*} > 0 \\ 0 \quad \text{if } y_1^{*} \le 0 \end{cases}, \quad
+  y = \begin{cases} \mathbf{x}_2' \beta_2 + \epsilon_2 \quad \text{if } y_1^{*} > 0 \\ \mathbf{x}_3' \beta_3 + \epsilon_3 \quad \text{if } y_1^{*} \le 0 \end{cases}, \quad
+  y_1^{*} = \mathbf{x}_1' \beta_1 + \epsilon_1 $$
 
 ### Tobitモデル [CT05, § 16.3]
 
@@ -88,6 +91,9 @@ $$ y^{*} = \mathbf{x}' \beta + \epsilon, \quad \epsilon \sim N(0, \sigma^2), \qu
 ここでしれっと $$ \epsilon \sim N $$ を仮定しているが、これが満たされない場合に以下の議論を適用することは適当でない。それはまた別の話 (control function approach by Lung-Fei Lee; Gordon Dahl)。
 
 なお、打ち切り (censoring) と切断 (truncation) は異なる点に注意。切断された分はデータが観測されないが、打ち切りはデータが閾値に張り付く (spike)。
+
+cf. [Tobitと線形モデルを比較した分かりやすい図](https://www.researchgate.net/figure/Tobit-model-vs-OLS-Consistent-estimates-of-the-parameters-of-the-Tobit-model-may-be_fig2_255606959)
+
 
 0より左側が切断され (left truncation at zero)、$$ y^{*} > 0 $$ の場合に $$y$$ が観測される場合を考える。
 
@@ -210,7 +216,7 @@ $$ y_{2i} = \mathbf{x}_{2i}' \beta_2 + \sigma_{12} \lambda(\mathbf{x}_{1i}' \hat
 * $$ \lambda(\mathbf{x}_{1}' \hat{\beta}_1) = \phi/\Phi $$: 推定された逆ミルズ比
 * $$ H_0: \sigma_{12} = 0 $$ はWald検定などによって検定することができる
 
-ただし、通常の標準誤差も heteroskedasticity-robust 標準誤差も正確ではない点に注意する必要がある。正確な標準誤差を導出するためには、(1) 誤差項 $$v$$ が不均一分散を持つこと、および、(2) $$ \beta_1 $$ は推定値で置き換えられること、の2点を考慮する必要がある。計算は複雑なので、統計パッケージに計算させるか、あるいはブートストラップ法で計算するのがベター。
+ただし、通常の標準誤差も heteroskedasticity-robust 標準誤差も正確ではない点に注意する必要がある。正確な標準誤差を導出するためには、(1) 誤差項 $$v$$ が不均一分散を持つこと、および、(2) $$ \beta_1 $$ は推定値で置き換えられること、の2点を考慮する必要がある。計算は複雑なので、統計パッケージに計算させるか、あるいはブートストラップ法で計算するのが吉。
 
 最尤推定する場合と比べて efficiency loss があるものの、(1) 実装が容易であること、(2) 他のセレクションモデルにも応用可能であること、(3) $$ \epsilon_1, \epsilon_2 $$ の同時正規分布の仮定と比べて弱い仮定でよいこと、(4) これらの分布に関する仮定はセミパラ推定のためにさらに弱めることが可能であること、といった利点があり、人気。
 
@@ -222,28 +228,54 @@ $$ \epsilon_2 = \delta \epsilon_1 + \xi, \quad \xi \perp \!\!\! \perp \epsilon_1
 
 より一般化すると、Heckman's two-step method は $$ \epsilon_1 $$ が正規分布以外の分布に従う場合も適用可能。
 
-### 例：賃金関数
+### 末石 [Section 6.5]
 
-たとえば、賃金関数の推定を考える。就労していない人の賃金は観測されない。もし、「就労しているかどうか」が完全にランダムに（外生的に）決定されるのであれば、観測されるデータ（就労している人の分）だけを使って賃金関数を推計することで何ら問題はない。
+たとえば、賃金関数の推定を考える。就労していない人の賃金は観測されない。
 
-しかし、現実にはランダムではない。このような場合、サンプルセレクション sample selection の問題が生じる。
+※就労していない人の賃金は、統計上は0（円）でも、0という賃金が（雇用市場で）付けられたわけではなく、$$ W_i = 0 $$ とすることはできない。仮に働けば、0ではない賃金が得られるはずである。
 
-$$ Y_i = \begin{cases} a + b x_i + u_i \quad \text{if} \quad M_i = 1 \\ . \text{ (unobservable)} \quad \text{if} \quad M_i = 0 \end{cases} $$
+$$ \log W_i = \mathbf{X}_i' \boldsymbol{\beta} + u_i, \quad E[u_i | \mathbf{X}_i] = 0 $$
 
-$$ M_i = \begin{cases} 1 \quad \text{if} \quad M_i^{*} > m \\ 0 \quad \text{if} \quad M_i^{*} \le m \end{cases} , \quad M_i^* = \alpha + \beta z_i + v_i $$
+* $$ W $$: 観測される賃金
+* $$ X $$: 個人属性（教育年数など）
 
-* $$ Y $$: 観測される賃金
-* $$ x $$: 個人属性（教育年数など）
-* $$ M $$: 就労しているかどうか (in labor force --> 1, or not --> 0)
-* $$ z $$: IV
+就労しているときに1をとるダミー変数を $$D$$ で表す。$$ D_i = 1 $$ となるデータのみ（就労している人のみ）で推定されるモデルは以下になる。
 
-cf. [Tobitと線形モデルを比較した分かりやすい図](https://www.researchgate.net/figure/Tobit-model-vs-OLS-Consistent-estimates-of-the-parameters-of-the-Tobit-model-may-be_fig2_255606959)
+$$ D_i \log W_i = D_i \mathbf{X}_i' \boldsymbol{\beta} + D_i u_i $$
+
+仮に $$ E[(D_i \mathbf{X}_i') (D_i u_i)] = \mathbf{0} $$ であれば、$$ \boldsymbol{\beta} $$ はOLSで一致推定できる。
+
+* もし、「就労しているかどうか」がランダムに（個人属性と無関係に、外生的に）決定されるのであれば、$$ D_i = 1 $$ のデータを使って賃金関数を推計することで何ら問題はない。しかし、現実にはランダムではない。
+* あるいは、ignorability $$ E[u_i | D_i, \mathbf{X}_i] = E[u_i | \mathbf{X}_i] = 0 $$ （外生変数で条件付ければ、$$ D_i $$ は $$ u_i $$ の条件付期待値には無関係）の仮定が満たされれば、OLS推定で問題ない。しかし、現実には観測されない変数も就労の有無に影響すると思われるため、この仮定を満たすと考えることは難しい。
+
+そこで、type II Tobit modelを考える。
+
+* Selection: $$ Y_{1i}^{*} = \mathbf{Z}_i' \boldsymbol{\gamma} + u_{1i}, \quad
+ D_i = 1\{ Y_{1i}^{*} \ge 0 \} $$
+* Outcome: $$ Y_{2i}^{*} = \mathbf{X}_i' \boldsymbol{\beta} + u_{2i} $$
+* $$ \begin{bmatrix} u_{1i} \\ u_{2i} \end{bmatrix} = N \left[
+   \begin{bmatrix} 0 \\ 0 \end{bmatrix},
+   \begin{bmatrix} 1 & \sigma_{12} \\ \sigma_{12} & \sigma_2^2 \end{bmatrix} \right], \quad
+   \begin{bmatrix} u_{1i} \\ u_{2i} \end{bmatrix} \perp \!\!\! \perp \mathbf{Z}_i $$
+  * $$ \sigma_{12} = 0 $$ の場合、セレクションの問題は生じない
+
+ここから尤度関数を導出して最尤法でパラメータを推定することができる。（一般論として）最尤推定量は漸近的に効率的だし、計算機の発展した現代は容易に計算できる。計算機性能の点で最尤推定が困難だった時代に、より簡単な計算方法が Heckman (1979) によって提案され、「Heckmanの2段階推定」や「ヘキット (Heckit)」として知られている。
+
+誤差項の正規性の仮定から、以下のようになる。
+
+$$ u_{2i} = \sigma_{12} u_{1i} + \eta_i, \quad (u_{1i} \perp \!\!\! \perp \eta_i) $$
+$$ E[Y_{2i} | Y_{1i}^{*} \ge 0, \mathbf{Z}_i] = \mathbf{X}_i' \boldsymbol{\beta} + \sigma_{12} E[u_{1i} | u_{1i} \ge - \mathbf{Z}_i' \boldsymbol{\gamma}, \mathbf{Z}_i'] = \mathbf{X}_i' \boldsymbol{\beta} + \sigma_{12} \lambda (\mathbf{Z}_i' \boldsymbol{\gamma}) $$
+
+1. Selection eq. をプロビット推定（最尤法） → $$ \gamma $$ の推定値を得る
+1. $$ D_i = 1 $$ のサンプルを用いて $$ Y_{2i} = \mathbf{X}_i' \boldsymbol{\beta} + \sigma_{12} \lambda (\mathbf{Z}_i' \boldsymbol{\hat{\gamma}}) + u_i $$ をOLS推定 → $$ \beta, \sigma_{12} $$ の推定値を得る
+  * $$ \hat{\gamma} $$ は generated regressor と呼ばれる
 
 ## 発展 [CT05, Section 16.9]
 
 Tobit model $$ y_i^{*} = \mathbf{x}_i' \beta + \epsilon_i $$ の仮定 $$ \epsilon_i \sim N[0, \sigma_i^2] $$ は緩和可能：
-(1) 不均一性を明示的にモデル化する：$$ \sigma_i^2 = \exp(\mathbf{z}_i' \gamma) $$
-(2) 正規分布よりも柔軟な分布 (squared polynomial expansion of the normal, etc.) を用いる
+
+1. 不均一性を明示的にモデル化する：$$ \sigma_i^2 = \exp(\mathbf{z}_i' \gamma) $$
+1. 正規分布よりも柔軟な分布 (squared polynomial expansion of the normal, etc.) を用いる
 
 Bivariate sample selection model に対しても同様で、たとえば Lee (ECTA 1983) は $$ (\epsilon_1, \epsilon_2) $$ を2変量正規分布の仮定がより妥当となるような変換を提案した。
 
